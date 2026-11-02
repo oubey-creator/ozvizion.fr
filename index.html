@@ -1,0 +1,767 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OZ Vizion · Plus de clients. Moins de hasard.</title>
+<meta name="description" content="OZ Vizion : un système d’acquisition client clé en main avec la publicité Meta. Des demandes qualifiées chaque semaine, vous n’avez plus qu’à signer. Audit offert.">
+<meta name="theme-color" content="#0E1116">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="OZ Vizion">
+<meta property="og:title" content="OZ Vizion · Plus de clients. Moins de hasard.">
+<meta property="og:description" content="OZ Vizion : un système d’acquisition client clé en main avec la publicité Meta. Des demandes qualifiées chaque semaine, vous n’avez plus qu’à signer. Audit offert.">
+<meta property="og:image" content="https://ozvizion.fr/oubey-ourzikene.webp">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 64 64%27%3E%3Crect width=%2764%27 height=%2764%27 rx=%2714%27 fill=%27%230E1116%27/%3E%3Crect x=%2710%27 y=%2738%27 width=%2744%27 height=%2710%27 fill=%27%23F2B544%27/%3E%3Ctext x=%2732%27 y=%2744%27 text-anchor=%27middle%27 font-family=%27Georgia,serif%27 font-style=%27italic%27 font-size=%2732%27 fill=%27white%27%3EOZ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Manrope:wght@400;500;600;700;800&amp;display=swap">
+<style>
+body{margin:0;background:#F6F3EC}
+a{color:#0E1116}a:hover{color:#8A5A00}
+@keyframes vzmarquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes vzfade{from{opacity:0;transform:translateY(36px)}to{opacity:1;transform:none}}
+@keyframes vzrise{from{opacity:0;transform:translateY(28px);filter:blur(6px)}to{opacity:1;transform:none;filter:blur(0)}}
+@keyframes vzmark{from{background-size:0% 38%}to{background-size:100% 38%}}
+@keyframes vzgrow{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes vzzoom{from{transform:scale(1.12)}to{transform:scale(1)}}
+@keyframes vzspin{to{transform:rotate(360deg)}}
+@keyframes vzpulse{0%{box-shadow:0 0 0 0 rgba(46,158,91,.45)}70%{box-shadow:0 0 0 10px rgba(46,158,91,0)}100%{box-shadow:0 0 0 0 rgba(46,158,91,0)}}
+@keyframes vzglow{0%,100%{opacity:.35}50%{opacity:.8}}
+@keyframes vzshine{0%{transform:translateX(-160%) skewX(-20deg)}55%,100%{transform:translateX(360%) skewX(-20deg)}}
+@keyframes vzping{0%{box-shadow:0 0 0 0 rgba(242,181,68,.6)}80%,100%{box-shadow:0 0 0 16px rgba(242,181,68,0)}}
+@keyframes vzgtred{0%,100%{text-shadow:0 0 0 rgba(255,90,95,0)}50%{text-shadow:0 0 38px rgba(255,90,95,.55)}}
+@keyframes vzwiggle{0%,100%{transform:rotate(0)}30%{transform:rotate(-12deg) scale(1.1)}60%{transform:rotate(9deg) scale(1.1)}}
+@keyframes vzpop{from{opacity:0;transform:translateY(24px) scale(.9)}to{opacity:1;transform:none}}
+@keyframes vzhead{to{box-shadow:0 10px 30px rgba(14,17,22,.08);background-color:rgba(246,243,236,.92)}}
+@keyframes vzleft{from{transform:translateX(-10%)}to{transform:translateX(6%)}}
+@keyframes vzright{from{transform:translateX(10%)}to{transform:translateX(-6%)}}
+@keyframes vzbar{from{width:0}to{width:28px}}
+@keyframes vzbounce{0%,100%{transform:translateY(0)}50%{transform:translateY(7px)}}
+@keyframes vzdrift{0%{transform:translate(0,0) rotate(0deg)}25%{transform:translate(16px,-14px) rotate(90deg)}50%{transform:translate(4px,-30px) rotate(180deg)}75%{transform:translate(-14px,-12px) rotate(270deg)}100%{transform:translate(0,0) rotate(360deg)}}
+@keyframes vztravel{0%{left:22px;opacity:0}8%{opacity:1}92%{opacity:1}100%{left:calc(100% - 30px);opacity:0}}
+@keyframes vzfloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+.vz-track{display:flex;align-items:center;gap:48px;width:max-content;animation:vzmarquee 30s linear infinite}
+.vz-reviews{display:flex;gap:22px;width:max-content;animation:vzmarquee 46s linear infinite;padding:16px 0 28px}
+.vz-in{animation:vzrise .9s cubic-bezier(.2,.7,.2,1) both}
+.vz-word{display:inline-block;animation:vzrise .8s cubic-bezier(.2,.7,.2,1) both}
+.vz-mark-in{animation:vzmark 1s cubic-bezier(.6,0,.2,1) 1.05s both}
+.vz-pulse{animation:vzpulse 2s ease-out infinite}
+.vz-spin{animation:vzspin 60s linear infinite}
+.vz-glow{animation:vzglow 4s ease-in-out infinite}
+.vz-ping{animation:vzping 2.4s ease-out infinite}
+.vz-glowred{animation:vzgtred 2.6s ease-in-out infinite}
+.vz-drift{display:inline-block;animation:vzdrift 8s ease-in-out infinite;padding:22px;margin:-22px;cursor:default;user-select:none;transition:rotate .8s cubic-bezier(.2,.7,.2,1), scale .8s cubic-bezier(.2,.7,.2,1), color .4s ease}
+.vz-drift:hover{rotate:270deg;scale:1.9}
+@keyframes vzshim{0%{background-position:-400px 0}100%{background-position:400px 0}}
+.vz-skel{display:block;background:linear-gradient(90deg,#EFEADF 0%,#FBF9F5 50%,#EFEADF 100%);background-size:800px 100%;animation:vzshim 1.6s linear infinite;border-radius:10px}
+.vz-float{animation:vzfloat 4s ease-in-out infinite}
+.vz-scroll{animation:vzbounce 1.6s ease-in-out infinite}
+.vz-travel{position:absolute;top:18px;left:22px;width:8px;height:8px;border-radius:50%;background:#F2B544;box-shadow:0 0 14px 5px rgba(242,181,68,.55);animation:vztravel 3.6s cubic-bezier(.45,0,.2,1) infinite;pointer-events:none}
+.vz-card{position:relative;transition:transform .35s cubic-bezier(.2,.7,.2,1), box-shadow .35s ease, border-color .35s ease}
+.vz-card:hover{transform:translateY(-6px);box-shadow:0 24px 54px rgba(14,17,22,.10)}
+.vz-card::before{content:"";position:absolute;left:28px;right:28px;top:-1px;height:3px;border-radius:0 0 4px 4px;background:#F2B544;transform:scaleX(0);transform-origin:0 50%;transition:transform .45s cubic-bezier(.2,.7,.2,1);z-index:2}
+.vz-card:hover::before{transform:scaleX(1)}
+.vz-card:hover .vz-ico{animation:vzwiggle .6s ease}
+.vz-btn{transition:transform .2s ease, box-shadow .2s ease}
+.vz-btn:hover{transform:translateY(-2px);box-shadow:0 12px 26px rgba(14,17,22,.2)}
+.vz-arrow{display:inline-block;transition:transform .25s ease}
+.vz-btn:hover .vz-arrow{transform:translateX(5px)}
+.vz-shine{position:relative;overflow:hidden;isolation:isolate}
+.vz-shine::after{content:"";position:absolute;top:0;bottom:0;left:0;width:35%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.7),transparent);animation:vzshine 3.4s ease-in-out infinite;pointer-events:none}
+.vz-nav{position:relative}
+.vz-nav::after{content:"";position:absolute;left:0;right:0;bottom:-4px;height:2px;background:#F2B544;transform:scaleX(0);transform-origin:0 50%;transition:transform .3s ease}
+.vz-nav:hover::after{transform:scaleX(1)}
+.vz-chip{transition:transform .2s ease, background-color .2s ease, border-color .2s ease}
+.vz-chip:hover{transform:translateY(-2px)}
+.vz-progress{transform:scaleX(0);transform-origin:0 50%}
+.vz-range{-webkit-appearance:none;appearance:none;height:8px;border-radius:999px;outline:none;cursor:pointer;margin:14px 0;touch-action:none}
+.vz-range::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:26px;height:26px;border-radius:50%;background:#F2B544;border:5px solid #0E1116;box-shadow:0 0 0 2px #F2B544;transition:transform .15s ease, box-shadow .2s ease;cursor:grab}
+.vz-range::-moz-range-thumb{width:16px;height:16px;border-radius:50%;background:#F2B544;border:5px solid #0E1116;box-shadow:0 0 0 2px #F2B544;transition:transform .15s ease, box-shadow .2s ease;cursor:grab}
+.vz-range::-moz-range-track{background:transparent}
+.vz-range:hover::-webkit-slider-thumb{transform:scale(1.15);box-shadow:0 0 0 2px #F2B544,0 0 0 9px rgba(242,181,68,.18)}
+.vz-range:hover::-moz-range-thumb{transform:scale(1.15);box-shadow:0 0 0 2px #F2B544,0 0 0 9px rgba(242,181,68,.18)}
+.vz-range:active::-webkit-slider-thumb{cursor:grabbing;transform:scale(1.25);box-shadow:0 0 0 2px #F2B544,0 0 0 12px rgba(242,181,68,.22),0 0 26px rgba(242,181,68,.65)}
+.vz-range:active::-moz-range-thumb{cursor:grabbing;transform:scale(1.25);box-shadow:0 0 0 2px #F2B544,0 0 0 12px rgba(242,181,68,.22),0 0 26px rgba(242,181,68,.65)}
+.vz-range:focus-visible::-webkit-slider-thumb{box-shadow:0 0 0 2px #F2B544,0 0 0 6px #FFFFFF}
+.vz-range:focus-visible::-moz-range-thumb{box-shadow:0 0 0 2px #F2B544,0 0 0 6px #FFFFFF}
+#commencer input[type=text],#commencer input[type=tel],#commencer input[type=email],#commencer input[type=url]{transition:border-color .2s ease, box-shadow .2s ease, background-color .2s ease}
+#commencer input[type=text]:focus,#commencer input[type=tel]:focus,#commencer input[type=email]:focus,#commencer input[type=url]:focus{outline:none;border-color:#0E1116 !important;background-color:#FFFFFF !important;box-shadow:0 0 0 4px rgba(242,181,68,.35)}
+@supports (animation-timeline: view()){
+.vz-reveal{animation:vzfade linear both;animation-timeline:view();animation-range:entry 0% entry 30%}
+.vz-d1{animation-range:entry 5% entry 38%}
+.vz-d2{animation-range:entry 10% entry 46%}
+.vz-d3{animation-range:entry 15% entry 54%}
+.vz-d4{animation-range:entry 20% entry 62%}
+.vz-mark{animation:vzmark linear both;animation-timeline:view();animation-range:entry 30% cover 40%}
+.vz-line{transform-origin:0 50%;animation:vzgrow linear both;animation-timeline:view();animation-range:entry 20% cover 45%}
+.vz-zoom{animation:vzzoom linear both;animation-timeline:view();animation-range:entry 0% cover 50%}
+.vz-pop{animation:vzpop linear both;animation-timeline:view();animation-range:entry 10% entry 45%}
+.vz-pop2{animation:vzpop linear both;animation-timeline:view();animation-range:entry 20% entry 55%}
+.vz-pop3{animation:vzpop linear both;animation-timeline:view();animation-range:entry 30% entry 65%}
+.vz-left{animation:vzleft linear both;animation-timeline:view();animation-range:cover 0% cover 100%}
+.vz-right{animation:vzright linear both;animation-timeline:view();animation-range:cover 0% cover 100%}
+.vz-bar{animation:vzbar linear both;animation-timeline:view();animation-range:entry 30% entry 70%}
+}
+@supports (animation-timeline: scroll()){
+.vz-progress{animation:vzgrow linear both;animation-timeline:scroll(root)}
+.vz-head{animation:vzhead linear both;animation-timeline:scroll(root);animation-range:0px 240px}
+}
+@media (prefers-reduced-motion: reduce){.vz-skel,.vz-track,.vz-reviews,.vz-in,.vz-word,.vz-mark-in,.vz-pulse,.vz-spin,.vz-glow,.vz-ping,.vz-glowred,.vz-drift,.vz-float,.vz-scroll,.vz-reveal,.vz-mark,.vz-line,.vz-zoom,.vz-pop,.vz-pop2,.vz-pop3,.vz-left,.vz-right,.vz-bar,.vz-head,.vz-shine::after{animation:none}.vz-travel{display:none}}
+
+html{scroll-behavior:smooth;scroll-padding-top:96px}
+[hidden]{display:none !important}
+.vz-opt{display:flex;gap:14px;align-items:flex-start;width:100%;text-align:left;padding:18px 20px;border-radius:18px;font-family:inherit;color:#FFFFFF;cursor:pointer;background:transparent;border:1.5px solid rgba(255,255,255,.15);transition:background-color .3s ease,border-color .3s ease}
+.vz-opt.is-on{background:rgba(255,255,255,.08);border-color:#F2B544}
+.vz-seg{flex:1 1 0;min-height:44px;border:none;border-radius:999px;padding:10px 14px;font-family:inherit;font-size:14px;font-weight:700;cursor:pointer;background:transparent;color:#4A515C;transition:background-color .3s ease,color .3s ease}
+.vz-seg.is-on{background:#0E1116;color:#FFFFFF}
+.vz-field{display:flex;flex-direction:column;gap:8px}
+.vz-field label{font-weight:700;font-size:15px}
+.vz-input{font-family:inherit;font-size:16px;padding:14px 16px;border-radius:14px;border:1px solid #E2DDD2;background:#FAF8F4;color:#0E1116;width:100%;box-sizing:border-box;transition:border-color .2s ease,box-shadow .2s ease,background-color .2s ease}
+.vz-input:focus{outline:none;border-color:#0E1116;background:#FFFFFF;box-shadow:0 0 0 4px rgba(242,181,68,.35)}
+.vz-radio{position:relative}
+.vz-radio input{position:absolute;opacity:0;width:1px;height:1px}
+.vz-radio span{display:inline-flex;align-items:center;font-size:15px;font-weight:600;padding:11px 18px;min-height:44px;box-sizing:border-box;border-radius:999px;border:1.5px solid #E2DDD2;background:#FAF8F4;color:#0E1116;cursor:pointer;transition:transform .2s ease,background-color .2s ease,border-color .2s ease}
+.vz-radio span:hover{transform:translateY(-2px)}
+.vz-radio input:checked + span{background:#0E1116;color:#FFFFFF;border-color:#0E1116;font-weight:700}
+.vz-radio input:focus-visible + span{box-shadow:0 0 0 3px rgba(242,181,68,.6)}
+.vz-tab{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:600;color:#8A909A}
+.vz-tab b{width:22px;height:22px;border-radius:999px;display:inline-flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;border:1.5px solid #C9CCD1;color:#8A909A;box-sizing:border-box}
+.vz-tab.is-active{font-weight:800;color:#0E1116}
+.vz-tab.is-active b{background:#0E1116;color:#FFFFFF;border-color:#0E1116}
+.vz-tab.is-done{color:#0E1116}
+.vz-tab.is-done b{background:#F2B544;border-color:#F2B544;color:#0E1116}
+.vz-next:disabled{opacity:.6;cursor:wait}
+@media (max-width: 960px){header nav .vz-nav{display:none}}
+[style*="overflow: hidden"]{overflow:clip !important}
+@media (max-width: 600px){#top .vz-drift{display:none}}
+@media (max-width: 560px){header nav a.vz-btn{padding:10px 14px !important;font-size:14px}}
+</style>
+</head>
+<body>
+
+
+
+<div style="background: radial-gradient(1400px 900px at 0% 28%, rgba(226,222,246,0.35), rgba(226,222,246,0) 60%), radial-gradient(1200px 900px at 100% 55%, rgba(250,229,204,0.4), rgba(250,229,204,0) 60%), radial-gradient(1200px 800px at 10% 85%, rgba(212,234,231,0.3), rgba(212,234,231,0) 60%), #F6F3EC; color: #0E1116; font-family: 'Manrope', system-ui, sans-serif; font-size: 17px; line-height: 1.6; min-height: 100vh">
+
+<!-- HEADER -->
+<header class="vz-head" style="position: sticky; top: 0; z-index: 50; background: rgba(246,243,236,0.75); backdrop-filter: blur(16px) saturate(180%); -webkit-backdrop-filter: blur(16px) saturate(180%); border-bottom: 1px solid rgba(14,17,22,0.07)">
+<div style="max-width: 1240px; margin: 0 auto; padding: 14px 24px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px">
+<a href="#top" style="display: flex; align-items: baseline; gap: 10px; text-decoration: none; color: #0E1116">
+<span style="font-family: 'Instrument Serif', serif; font-style: italic; font-size: 40px; line-height: 1; padding: 0 4px; background: linear-gradient(transparent 62%, #F2B544 62%)">OZ</span>
+<span style="font-size: 19px; font-weight: 800; letter-spacing: 0.24em">VIZION</span>
+</a>
+<nav style="display: flex; flex-wrap: wrap; align-items: center; gap: 22px; font-size: 15px; font-weight: 600">
+<a href="#constat" class="vz-nav" style="color: #3A414C; text-decoration: none">Le constat</a>
+<a href="#inaction" class="vz-nav" style="color: #3A414C; text-decoration: none">Calculateur</a>
+<a href="#offre" class="vz-nav" style="color: #3A414C; text-decoration: none">L’offre</a>
+<a href="#moi" class="vz-nav" style="color: #3A414C; text-decoration: none">Qui suis-je</a>
+<a href="#avis" class="vz-nav" style="color: #3A414C; text-decoration: none">Avis</a>
+<a href="#commencer" data-pick="call" class="vz-btn" style="background: transparent; color: #0E1116; text-decoration: none; font-weight: 700; padding: 11px 20px; border-radius: 999px; border: 1.5px solid #0E1116; min-height: 44px; box-sizing: border-box; display: inline-flex; align-items: center">Réserver un appel</a>
+<a href="#commencer" data-pick="audit" class="vz-btn" style="background: #0E1116; color: #FFFFFF; text-decoration: none; font-weight: 700; padding: 12px 22px; border-radius: 999px; min-height: 44px; box-sizing: border-box; display: inline-flex; align-items: center; gap: 8px">Audit gratuit <span class="vz-arrow" aria-hidden="true">→</span></a>
+</nav>
+</div>
+<div class="vz-progress" aria-hidden="true" style="height: 3px; background: #F2B544"></div>
+</header>
+
+<!-- HERO -->
+<section id="top" style="padding: 104px 0 80px; position: relative; overflow: hidden; background: radial-gradient(900px 520px at 12% 0%, rgba(222,218,246,0.65), rgba(222,218,246,0) 62%), radial-gradient(800px 480px at 92% 8%, rgba(250,228,200,0.8), rgba(250,228,200,0) 60%), radial-gradient(700px 420px at 50% 100%, rgba(210,234,231,0.55), rgba(210,234,231,0) 65%)">
+<div aria-hidden="true" class="vz-spin" style="position: absolute; left: 50%; top: 50%; width: 900px; height: 900px; margin: -450px 0 0 -450px; border-radius: 999px; border: 1px dashed #DDD8CC"></div>
+<div aria-hidden="true" class="vz-glow" style="position: absolute; left: 50%; top: 40%; width: 520px; height: 520px; margin: -260px 0 0 -260px; border-radius: 999px; background: radial-gradient(circle, rgba(242,181,68,0.22), rgba(242,181,68,0) 65%)"></div>
+<span aria-hidden="true" class="vz-drift" style="position: absolute; left: 10%; top: 22%; font-size: 30px; font-weight: 300; color: #C98A0B">+</span>
+<span aria-hidden="true" class="vz-drift" style="position: absolute; right: 12%; top: 30%; font-size: 22px; font-weight: 300; color: #0E1116; animation-delay: 1.5s">+</span>
+<span aria-hidden="true" class="vz-drift" style="position: absolute; left: 18%; bottom: 14%; font-size: 18px; font-weight: 300; color: #0E1116; animation-delay: 3s">+</span>
+<span aria-hidden="true" class="vz-drift" style="position: absolute; right: 20%; bottom: 18%; font-size: 26px; font-weight: 300; color: #C98A0B; animation-delay: 4.5s">+</span>
+<div style="max-width: 940px; margin: 0 auto; padding: 0 24px; display: flex; flex-direction: column; align-items: center; gap: 28px; text-align: center; position: relative">
+<div class="vz-in" style="animation-delay: .05s; display: inline-flex; align-items: center; gap: 10px; background: #FFFFFF; border: 1px solid #E5E0D5; border-radius: 999px; padding: 8px 16px; font-size: 14px; font-weight: 700; color: #3A414C">
+<span class="vz-pulse" style="width: 8px; height: 8px; border-radius: 999px; background: #2E9E5B"></span>
+Un système clé en main
+</div>
+<h1 style="margin: 0; font-size: clamp(46px, 7vw, 92px); line-height: 1.02; font-weight: 800; letter-spacing: -0.045em"><span class="vz-word" style="animation-delay: .12s">Plus</span> <span class="vz-word" style="animation-delay: .22s">de</span> <span class="vz-word" style="animation-delay: .32s">clients.</span> <span class="vz-word" style="animation-delay: .5s"><span class="vz-mark-in" style="display: inline-block; white-space: nowrap; font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400; letter-spacing: -0.01em; padding: 0 8px; background-image: linear-gradient(#F2B544, #F2B544); background-repeat: no-repeat; background-position: 0 88%; background-size: 100% 38%">Moins de hasard.</span></span></h1>
+<span aria-hidden="true" class="vz-drift" style="position: absolute; left: -2%; top: 50%; font-size: 22px; font-weight: 300; color: #C98A0B; animation-delay: .8s">+</span>
+<span aria-hidden="true" class="vz-drift" style="position: absolute; right: -3%; top: 44%; font-size: 15px; color: #0E1116; animation-delay: 2.4s">✦</span>
+<span aria-hidden="true" class="vz-drift" style="position: absolute; right: 2%; top: 64%; font-size: 26px; font-weight: 300; color: #C98A0B; animation-delay: 4s">+</span>
+<p class="vz-in" style="animation-delay: .3s; margin: 0; font-size: 21px; color: #4A515C; max-width: 620px">Vous faites votre métier. On s’occupe de remplir votre agenda, du premier regard jusqu’au rendez-vous confirmé. Vous n’avez plus qu’à signer.</p>
+<div class="vz-in" style="animation-delay: .45s; display: flex; flex-wrap: wrap; justify-content: center; gap: 14px">
+<a href="#commencer" data-pick="audit" class="vz-btn vz-shine" style="background: #F2B544; color: #0E1116; text-decoration: none; font-weight: 800; padding: 17px 30px; border-radius: 999px; font-size: 17px; display: inline-flex; gap: 10px; align-items: center">Recevoir mon audit gratuit <span class="vz-arrow" aria-hidden="true">→</span></a>
+<a href="#commencer" data-pick="call" class="vz-btn" style="color: #0E1116; background: #FFFFFF; text-decoration: none; font-weight: 700; padding: 16px 26px; border-radius: 999px; border: 1.5px solid #0E1116; font-size: 17px">Réserver un appel</a>
+</div>
+<p class="vz-in" style="animation-delay: .6s; margin: 0; font-size: 14px; color: #5B6270">Audit offert · sans engagement · réponse sous 24 h</p>
+<a href="#constat" class="vz-in" style="animation-delay: .9s; margin-top: 18px; display: inline-flex; flex-direction: column; align-items: center; gap: 8px; font-size: 12px; font-weight: 800; letter-spacing: 0.18em; color: #5B6270; text-decoration: none">DÉCOUVRIR<span class="vz-scroll" aria-hidden="true" style="width: 36px; height: 36px; border-radius: 999px; border: 1.5px solid #D9D3C6; background: #FFFFFF; display: inline-flex; align-items: center; justify-content: center; color: #0E1116; font-size: 16px">↓</span></a>
+</div>
+</section>
+
+<section aria-label="Nos engagements" style="border-top: 1px solid #E5E0D5; border-bottom: 1px solid #E5E0D5; background: #EFEADF; overflow: hidden">
+<div style="padding: 20px 0">
+<div class="vz-track" style="font-size: 18px; font-weight: 700; color: #2B313B; white-space: nowrap">
+<span>Visibilité locale</span><span aria-hidden="true" style="color: #C98A0B">✦</span>
+<span>Demandes filtrées</span><span aria-hidden="true" style="color: #C98A0B">✦</span>
+<span>Rendez-vous confirmés</span><span aria-hidden="true" style="color: #C98A0B">✦</span>
+<span>Suivi clair</span><span aria-hidden="true" style="color: #C98A0B">✦</span>
+<span>Visibilité locale</span><span aria-hidden="true" style="color: #C98A0B">✦</span>
+<span>Demandes filtrées</span><span aria-hidden="true" style="color: #C98A0B">✦</span>
+<span>Rendez-vous confirmés</span><span aria-hidden="true" style="color: #C98A0B">✦</span>
+<span>Suivi clair</span><span aria-hidden="true" style="color: #C98A0B">✦</span>
+<span aria-hidden="true">Visibilité locale</span><span aria-hidden="true" style="color: #C98A0B">✦</span>
+<span aria-hidden="true">Demandes filtrées</span><span aria-hidden="true" style="color: #C98A0B">✦</span>
+<span aria-hidden="true">Rendez-vous confirmés</span><span aria-hidden="true" style="color: #C98A0B">✦</span>
+<span aria-hidden="true">Suivi clair</span><span aria-hidden="true" style="color: #C98A0B">✦</span>
+<span aria-hidden="true">Visibilité locale</span><span aria-hidden="true" style="color: #C98A0B">✦</span>
+<span aria-hidden="true">Demandes filtrées</span><span aria-hidden="true" style="color: #C98A0B">✦</span>
+<span aria-hidden="true">Rendez-vous confirmés</span><span aria-hidden="true" style="color: #C98A0B">✦</span>
+<span aria-hidden="true">Suivi clair</span><span aria-hidden="true" style="color: #C98A0B">✦</span>
+</div>
+</div>
+</section>
+
+<!-- PREUVES (chiffres) -->
+<section id="vz-proof" aria-label="Nos résultats" style="padding: 28px 0 0">
+<div style="max-width: 1200px; margin: 0 auto; padding: 0 24px">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 14px">
+<div class="vz-card vz-reveal" style="background: #FFFFFF; border: 1px solid #E5E0D5; border-radius: 20px; padding: 18px 22px; display: flex; align-items: center; gap: 16px">
+<span class="vz-ico" style="width: 42px; height: 42px; border-radius: 12px; background: #EFEADF; display: flex; align-items: center; justify-content: center; flex-shrink: 0"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0E1116" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="14" rx="3"></rect><path d="M16 13h2M2 10h20M6 6V4h12v2"></path></svg></span>
+<div style="display: flex; flex-direction: column; line-height: 1.25"><span style="font-size: clamp(26px, 2.8vw, 34px); font-weight: 800; letter-spacing: -0.03em; font-variant-numeric: tabular-nums"><span class="vz-count" data-to="13000" data-prefix="+" data-suffix=" €">+13 000 €</span></span><span style="font-size: 14px; color: #4A515C; font-weight: 600">de budget publicitaire géré</span></div>
+</div>
+<div class="vz-card vz-reveal vz-d1" style="background: #0E1116; color: #FFFFFF; border: 1px solid #0E1116; border-radius: 20px; padding: 18px 22px; display: flex; align-items: center; gap: 16px; overflow: hidden">
+<div aria-hidden="true" class="vz-spin" style="position: absolute; right: -70px; top: -70px; width: 170px; height: 170px; border-radius: 999px; border: 1px dashed rgba(255,255,255,0.14)"></div>
+<span class="vz-ico" style="width: 42px; height: 42px; border-radius: 12px; background: #F2B544; display: flex; align-items: center; justify-content: center; flex-shrink: 0; position: relative"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0E1116" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><circle cx="12" cy="12" r="5"></circle><circle cx="12" cy="12" r="1.5"></circle></svg></span>
+<div style="display: flex; flex-direction: column; line-height: 1.25; position: relative"><span style="font-size: clamp(26px, 2.8vw, 34px); font-weight: 800; letter-spacing: -0.03em; color: #F2B544; font-variant-numeric: tabular-nums"><span class="vz-count" data-to="2100" data-prefix="+">+2 100</span></span><span style="font-size: 14px; color: #C3C8D0; font-weight: 600">demandes qualifiées générées</span></div>
+</div>
+<div class="vz-card vz-reveal vz-d2" style="background: #FFFFFF; border: 1px solid #E5E0D5; border-radius: 20px; padding: 18px 22px; display: flex; align-items: center; gap: 16px">
+<span class="vz-ico" style="width: 42px; height: 42px; border-radius: 12px; background: #EFEADF; display: flex; align-items: center; justify-content: center; flex-shrink: 0"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0E1116" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="13" rx="2"></rect><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2M2 13h20"></path></svg></span>
+<div style="display: flex; flex-direction: column; line-height: 1.25"><span style="font-size: clamp(26px, 2.8vw, 34px); font-weight: 800; letter-spacing: -0.03em; font-variant-numeric: tabular-nums"><span class="vz-count" data-to="8">8</span></span><span style="font-size: 14px; color: #4A515C; font-weight: 600">entreprises accompagnées</span></div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- 01 LE CONSTAT -->
+<section id="constat" style="padding: 104px 0 112px">
+<div style="max-width: 1200px; margin: 0 auto; padding: 0 24px; display: flex; flex-direction: column; gap: 52px">
+<div class="vz-reveal" style="display: flex; flex-direction: column; gap: 16px; max-width: 760px">
+<span style="display: inline-flex; align-items: center; gap: 12px; font-size: 13px; font-weight: 800; letter-spacing: 0.16em; color: #5B6270"><span class="vz-bar" style="width: 28px; height: 3px; background: #F2B544"></span>01 · LE CONSTAT</span>
+<h2 style="margin: 0; font-size: clamp(34px, 4.6vw, 58px); line-height: 1.05; font-weight: 800; letter-spacing: -0.03em">Sans visibilité, <span class="vz-mark" style="font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400; padding: 0 4px; background-image: linear-gradient(#F2B544, #F2B544); background-repeat: no-repeat; background-position: 0 88%; background-size: 100% 38%">pas de prédictibilité.</span></h2>
+<p style="margin: 0; color: #4A515C; font-size: 19px">Le même schéma revient chez presque toutes les entreprises qu’on rencontre.</p>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px">
+<div class="vz-card vz-reveal" style="background: #EFEADF; border: 1px solid transparent; border-radius: 24px; padding: 30px; display: flex; flex-direction: column; gap: 12px">
+<span class="vz-ico" style="width: 46px; height: 46px; border-radius: 14px; background: #FFFFFF; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0E1116" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg></span>
+<h3 style="margin: 0; font-size: 20px; font-weight: 800">Attendre le bouche-à-oreille</h3>
+<p style="margin: 0; color: #4A515C; font-size: 16px">Des mois pleins, des <b style="font-weight: 700; color: #0E1116; background: linear-gradient(transparent 58%, rgba(242,181,68,0.55) 58%); padding: 0 2px">mois vides</b>. Impossible de prévoir ni d’investir sereinement.</p>
+</div>
+<div class="vz-card vz-reveal vz-d1" style="background: #EFEADF; border: 1px solid transparent; border-radius: 24px; padding: 30px; display: flex; flex-direction: column; gap: 12px">
+<span class="vz-ico" style="width: 46px; height: 46px; border-radius: 14px; background: #FFFFFF; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0E1116" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 20v-1a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v1"></path><circle cx="9" cy="8" r="3.5"></circle><path d="M17 8l4 4M21 8l-4 4"></path></svg></span>
+<h3 style="margin: 0; font-size: 20px; font-weight: 800">Des contacts, pas des clients</h3>
+<p style="margin: 0; color: #4A515C; font-size: 16px">Des curieux, des prix cassés, et des demandes <b style="font-weight: 700; color: #0E1116; background: linear-gradient(transparent 58%, rgba(242,181,68,0.55) 58%); padding: 0 2px">revendues à vos concurrents</b>.</p>
+</div>
+<div class="vz-card vz-reveal vz-d2" style="background: #EFEADF; border: 1px solid transparent; border-radius: 24px; padding: 30px; display: flex; flex-direction: column; gap: 12px">
+<span class="vz-ico" style="width: 46px; height: 46px; border-radius: 14px; background: #FFFFFF; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0E1116" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="14" rx="2"></rect><path d="M10 9l4 2-4 2z"></path><path d="M8 21h8"></path></svg></span>
+<h3 style="margin: 0; font-size: 20px; font-weight: 800">Du contenu publié en vain</h3>
+<p style="margin: 0; color: #4A515C; font-size: 16px">Des heures à publier, quelques likes, et <b style="font-weight: 700; color: #0E1116; background: linear-gradient(transparent 58%, rgba(242,181,68,0.55) 58%); padding: 0 2px">aucun client</b> qui appelle.</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- 02 CALCULATEUR (composant séparé, pour des curseurs fluides) -->
+<section id="inaction" style="padding: 112px 0; background: #0E1116; color: #FFFFFF; position: relative; overflow: hidden; font-family: 'Manrope', system-ui, sans-serif; font-size: 17px; line-height: 1.6">
+<span aria-hidden="true" class="vz-drift" style="position: absolute; left: 6%; bottom: 12%; font-size: 30px; font-weight: 300; color: rgba(255,255,255,0.35)">+</span>
+<span aria-hidden="true" class="vz-drift" style="position: absolute; right: 8%; top: 14%; font-size: 26px; font-weight: 300; color: #FF5A5F; animation-delay: 2s">+</span>
+<span aria-hidden="true" class="vz-drift" style="position: absolute; right: 30%; bottom: 8%; font-size: 18px; font-weight: 300; color: rgba(255,255,255,0.3); animation-delay: 4s">+</span>
+<div aria-hidden="true" class="vz-glow" style="position: absolute; left: -200px; top: -200px; width: 600px; height: 600px; border-radius: 999px; background: radial-gradient(circle, rgba(242,181,68,0.16), rgba(242,181,68,0) 65%)"></div>
+<div style="max-width: 1200px; margin: 0 auto; padding: 0 24px; display: flex; flex-direction: column; gap: 48px; position: relative">
+<div class="vz-reveal" style="display: flex; flex-direction: column; gap: 16px; max-width: 760px">
+<span style="display: inline-flex; align-items: center; gap: 12px; font-size: 13px; font-weight: 800; letter-spacing: 0.16em; color: #A3AAB5"><span class="vz-bar" style="width: 28px; height: 3px; background: #F2B544"></span>02 · LE COÛT DE L’INACTION</span>
+<h2 style="margin: 0; font-size: clamp(34px, 4.6vw, 58px); line-height: 1.05; font-weight: 800; letter-spacing: -0.03em">Combien de clients <span style="font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400; color: #F2B544">partent ailleurs ?</span></h2>
+<p style="margin: 0; color: #C3C8D0">Chaque client que vous ne captez pas ne disparaît pas : il signe chez un concurrent. Mettez vos chiffres, et voyez ce que ça représente.</p>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px">
+<div class="vz-reveal" style="background: #161B22; border: 1px solid #262D37; border-radius: 28px; padding: clamp(24px, 3.5vw, 40px); display: flex; flex-direction: column; gap: 30px; justify-content: center">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 12px"><label for="vz-value" style="font-weight: 700; color: #D5D9DF">Ce que vous rapporte un client</label><span style="font-size: 28px; font-weight: 800; font-variant-numeric: tabular-nums" id="calc-value-label">1 500 €</span></div>
+<input id="vz-value" class="vz-range" type="range" min="100" max="20000" step="50" value="1500">
+<div style="display: flex; justify-content: space-between; font-size: 13px; color: #8A929D"><span>100 €</span><span>20 000 €</span></div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 6px">
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 12px"><label for="vz-lost" style="font-weight: 700; color: #D5D9DF">Clients qui partent ailleurs chaque mois</label><span style="font-size: 28px; font-weight: 800; font-variant-numeric: tabular-nums" id="calc-lost-label">5</span></div>
+<input id="vz-lost" class="vz-range" type="range" min="1" max="30" step="1" value="5">
+<div style="display: flex; justify-content: space-between; font-size: 13px; color: #8A929D"><span>1</span><span>30</span></div>
+</div>
+</div>
+<div class="vz-reveal vz-d1" style="background: linear-gradient(160deg, #1D2430, #121720); border: 1px solid #2B3340; border-radius: 28px; padding: clamp(24px, 3.5vw, 44px); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px; text-align: center">
+<span style="font-size: 13px; font-weight: 800; letter-spacing: 0.16em; color: #A3AAB5">CE QUE VOUS LAISSEZ PASSER EN 12 MOIS</span>
+<span class="vz-glowred" style="font-size: clamp(52px, 7vw, 84px); font-weight: 800; letter-spacing: -0.04em; line-height: 1; color: #FF5A5F; font-variant-numeric: tabular-nums" id="calc-year">− 90 000 €</span>
+<p style="margin: 0; color: #C3C8D0; font-size: 18px">soit <b id="calc-month" style="color: #FF5A5F">− 7 500 €</b> chaque mois,<br>et <b id="calc-day" style="color: #FF5A5F">− 247 €</b> chaque jour où rien ne change.</p>
+<a href="#commencer" data-pick="audit" class="vz-btn vz-shine" style="margin-top: 6px; background: #F2B544; color: #0E1116; text-decoration: none; font-weight: 800; padding: 16px 28px; border-radius: 999px; display: inline-flex; gap: 10px; align-items: center">Arrêter de perdre ces clients <span class="vz-arrow" aria-hidden="true">→</span></a>
+<p style="margin: 0; font-size: 13px; color: #8A929D">Simulation indicative basée sur vos chiffres, pas une promesse de résultat.</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- 03 L'OFFRE + LA SOLUTION -->
+<section id="offre" style="padding: 112px 0; background: #EFEADF">
+<div style="max-width: 1200px; margin: 0 auto; padding: 0 24px; display: flex; flex-direction: column; gap: 56px">
+<div class="vz-reveal" style="display: flex; flex-direction: column; gap: 16px; max-width: 760px">
+<span style="display: inline-flex; align-items: center; gap: 12px; font-size: 13px; font-weight: 800; letter-spacing: 0.16em; color: #5B6270"><span class="vz-bar" style="width: 28px; height: 3px; background: #F2B544"></span>03 · L’OFFRE</span>
+<h2 style="margin: 0; font-size: clamp(34px, 4.6vw, 58px); line-height: 1.05; font-weight: 800; letter-spacing: -0.03em">Ce qu’on met en place, <span class="vz-mark" style="font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400; padding: 0 4px; background-image: linear-gradient(#F2B544, #F2B544); background-repeat: no-repeat; background-position: 0 88%; background-size: 100% 38%">en 4 étapes.</span></h2>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px">
+<div class="vz-card vz-reveal" style="background: #FFFFFF; border: 1px solid #E5E0D5; border-radius: 24px; padding: 30px; display: flex; flex-direction: column; gap: 12px">
+<div style="display: flex; justify-content: space-between; align-items: center"><span style="font-family: 'Instrument Serif', serif; font-style: italic; font-size: 48px; line-height: 1">01</span><span style="background: #F2B544; color: #0E1116; font-size: 12px; font-weight: 800; letter-spacing: 0.08em; padding: 5px 10px; border-radius: 999px">OFFERT</span></div>
+<h3 style="margin: 0; font-size: 21px; font-weight: 800">L’audit</h3>
+<p style="margin: 0; color: #4A515C; font-size: 16px">Votre offre, votre zone, vos marges.</p>
+</div>
+<div class="vz-card vz-reveal vz-d1" style="background: #FFFFFF; border: 1px solid #E5E0D5; border-radius: 24px; padding: 30px; display: flex; flex-direction: column; gap: 12px">
+<span style="font-family: 'Instrument Serif', serif; font-style: italic; font-size: 48px; line-height: 1">02</span>
+<h3 style="margin: 0; font-size: 21px; font-weight: 800">La stratégie</h3>
+<p style="margin: 0; color: #4A515C; font-size: 16px">Le bon client, le bon message, le bon angle.</p>
+</div>
+<div class="vz-card vz-reveal vz-d2" style="background: #FFFFFF; border: 1px solid #E5E0D5; border-radius: 24px; padding: 30px; display: flex; flex-direction: column; gap: 12px">
+<span style="font-family: 'Instrument Serif', serif; font-style: italic; font-size: 48px; line-height: 1">03</span>
+<h3 style="margin: 0; font-size: 21px; font-weight: 800">Le lancement</h3>
+<p style="margin: 0; color: #4A515C; font-size: 16px">Scripts, tournage, campagnes. Vous validez, on lance.</p>
+</div>
+<div class="vz-card vz-reveal vz-d3" style="background: #0E1116; color: #FFFFFF; border: 1px solid #0E1116; border-radius: 24px; padding: 30px; display: flex; flex-direction: column; gap: 12px">
+<span style="font-family: 'Instrument Serif', serif; font-style: italic; font-size: 48px; line-height: 1; color: #F2B544">04</span>
+<h3 style="margin: 0; font-size: 21px; font-weight: 800">Le suivi</h3>
+<p style="margin: 0; color: #C3C8D0; font-size: 16px">Un point régulier. On garde ce qui marche.</p>
+</div>
+</div>
+
+<div class="vz-reveal" style="background: #0E1116; color: #FFFFFF; border-radius: 36px; padding: clamp(32px, 5vw, 64px); display: flex; flex-direction: column; gap: 44px; position: relative; overflow: hidden">
+<div aria-hidden="true" class="vz-spin" style="position: absolute; right: -200px; top: -200px; width: 520px; height: 520px; border-radius: 999px; border: 1px dashed rgba(255,255,255,0.12)"></div>
+<div aria-hidden="true" style="position: absolute; right: -100px; top: -100px; width: 320px; height: 320px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.07)"></div>
+<span aria-hidden="true" class="vz-drift" style="position: absolute; right: 6%; bottom: 10%; font-size: 24px; font-weight: 300; color: #F2B544; animation-delay: 1s">+</span>
+<div style="display: flex; flex-direction: column; gap: 12px; max-width: 680px; position: relative">
+<span style="font-size: 13px; font-weight: 800; letter-spacing: 0.16em; color: #F2B544">LA SOLUTION · UN SYSTÈME CLÉ EN MAIN</span>
+<h3 style="margin: 0; font-size: clamp(30px, 3.8vw, 48px); line-height: 1.08; font-weight: 800; letter-spacing: -0.02em">Vous ne vous occupez de rien. <span style="font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400; color: #F2B544">Vous signez vos devis.</span></h3>
+</div>
+<div style="position: relative">
+<div aria-hidden="true" class="vz-line" style="position: absolute; left: 22px; right: 22px; top: 21px; height: 2px; background: linear-gradient(90deg, rgba(255,255,255,0.15), #F2B544)"></div>
+<div aria-hidden="true" class="vz-travel"></div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 18px; position: relative">
+<div class="vz-reveal" style="display: flex; flex-direction: column; gap: 14px"><span class="vz-ping" style="animation-delay: 0s; width: 44px; height: 44px; border-radius: 999px; background: #1A2028; border: 1px solid rgba(255,255,255,0.15); display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 14px">01</span><b style="font-size: 18px">Il voit votre pub</b><p style="margin: 0; color: #A3AAB5; font-size: 15px">Dans votre zone, au bon moment.</p></div>
+<div class="vz-reveal vz-d1" style="display: flex; flex-direction: column; gap: 14px"><span class="vz-ping" style="animation-delay: .6s; width: 44px; height: 44px; border-radius: 999px; background: #1A2028; border: 1px solid rgba(255,255,255,0.15); display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 14px">02</span><b style="font-size: 18px">Il se reconnaît</b><p style="margin: 0; color: #A3AAB5; font-size: 15px">Un message qui lui parle.</p></div>
+<div class="vz-reveal vz-d2" style="display: flex; flex-direction: column; gap: 14px"><span class="vz-ping" style="animation-delay: 1.2s; width: 44px; height: 44px; border-radius: 999px; background: #1A2028; border: 1px solid rgba(255,255,255,0.15); display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 14px">03</span><b style="font-size: 18px">Il fait sa demande</b><p style="margin: 0; color: #A3AAB5; font-size: 15px">Un formulaire qui filtre.</p></div>
+<div class="vz-reveal vz-d3" style="display: flex; flex-direction: column; gap: 14px"><span class="vz-ping" style="animation-delay: 1.8s; width: 44px; height: 44px; border-radius: 999px; background: #1A2028; border: 1.5px solid #F2B544; color: #F2B544; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 14px">04</span><b style="font-size: 18px">On trie, on pré-qualifie</b><p style="margin: 0; color: #A3AAB5; font-size: 15px">Besoin, budget, délai : tout est vérifié.</p><span style="align-self: flex-start; font-size: 12px; font-weight: 800; letter-spacing: 0.08em; color: #0E1116; background: #F2B544; padding: 4px 10px; border-radius: 999px">NOTRE FILTRE</span></div>
+<div class="vz-reveal vz-d4" style="display: flex; flex-direction: column; gap: 14px"><span class="vz-ping" style="animation-delay: 2.4s; width: 44px; height: 44px; border-radius: 999px; background: #F2B544; color: #0E1116; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 14px">05</span><b style="font-size: 18px">Vous signez</b><p style="margin: 0; color: #A3AAB5; font-size: 15px">Il ne reste qu’à signer.</p></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- 04 QUI SUIS-JE -->
+<section id="moi" style="padding: 112px 0">
+<div style="max-width: 1200px; margin: 0 auto; padding: 0 24px; display: flex; flex-wrap: wrap; align-items: center; gap: 64px">
+<div class="vz-reveal" style="flex: 1 1 340px; min-width: 0; max-width: 450px; position: relative">
+<div style="aspect-ratio: 4 / 5; border-radius: 32px; overflow: hidden; background: #E5E0D5">
+<img class="vz-zoom" src="oubey-ourzikene.webp" alt="Oubey Ourzikene, fondateur d’OZ Vizion" style="width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block">
+</div>
+<div class="vz-float" style="position: absolute; top: 18px; left: 18px; background: #F2B544; color: #0E1116; font-size: 13px; font-weight: 800; padding: 7px 14px; border-radius: 999px; box-shadow: 0 8px 20px rgba(14,17,22,0.18)">Expert Meta Ads</div>
+<div style="position: absolute; left: 18px; right: 18px; bottom: 18px; background: rgba(255,255,255,0.92); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-radius: 18px; padding: 14px 18px; display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap">
+<div style="display: flex; flex-direction: column; line-height: 1.35"><span style="font-weight: 800">Oubey Ourzikene</span><span style="font-size: 13px; color: #4A515C">Fondateur</span></div>
+<span style="display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 700; color: #2B313B"><span class="vz-pulse" style="width: 9px; height: 9px; border-radius: 999px; background: #2E9E5B"></span>Disponible</span>
+</div>
+</div>
+<div style="flex: 999 1 460px; min-width: 0; display: flex; flex-direction: column; gap: 22px">
+<span class="vz-reveal" style="display: inline-flex; align-items: center; gap: 12px; font-size: 13px; font-weight: 800; letter-spacing: 0.16em; color: #5B6270"><span class="vz-bar" style="width: 28px; height: 3px; background: #F2B544"></span>04 · QUI SUIS-JE</span>
+<h2 class="vz-reveal" style="margin: 0; font-size: clamp(36px, 5vw, 62px); line-height: 1.02; font-weight: 800; letter-spacing: -0.03em">Moi, c’est <span class="vz-mark" style="font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400; padding: 0 4px; background-image: linear-gradient(#F2B544, #F2B544); background-repeat: no-repeat; background-position: 0 88%; background-size: 100% 38%">Oubey.</span></h2>
+<p class="vz-reveal" style="margin: 0; color: #2B313B; font-size: 18px">J’ai 21 ans et je suis <b style="font-weight: 700; color: #0E1116; background: linear-gradient(transparent 58%, rgba(242,181,68,0.55) 58%); padding: 0 2px">expert Meta Ads</b>. Avant la publicité, il y a eu le terrain : formé à l’électricité puis à la maintenance industrielle, j’ai travaillé aux côtés de professionnels qui faisaient un excellent travail, mais dont l’agenda dépendait du bouche-à-oreille.</p>
+<p class="vz-reveal" style="margin: 0; color: #2B313B; font-size: 18px">Depuis 3 ans, j’étudie la publicité Meta. J’ai rejoint Meridia, une agence spécialisée en acquisition client, où je gérais la création, la gestion et l’optimisation des campagnes publicitaires des clients, pour leur apporter <b style="font-weight: 700; color: #0E1116; background: linear-gradient(transparent 58%, rgba(242,181,68,0.55) 58%); padding: 0 2px">des résultats concrets</b>.</p>
+<p class="vz-reveal" style="margin: 0; color: #2B313B; font-size: 18px">J’ai décidé d’aller plus loin : accompagner moi-même les entreprises, pour leur apporter un <b style="font-weight: 700; color: #0E1116; background: linear-gradient(transparent 58%, rgba(242,181,68,0.55) 58%); padding: 0 2px">flux de clients régulier</b>. C’est pour ça que j’ai créé <span style="white-space: nowrap; font-weight: 800; color: #0E1116"><span style="font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400; font-size: 1.15em; padding: 0 3px; background: linear-gradient(transparent 58%, #F2B544 58%)">OZ</span>&nbsp;<span style="letter-spacing: 0.14em; font-size: 0.86em">VIZION</span></span>.</p>
+<div class="vz-reveal" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px">
+<div class="vz-pop" style="background: #FFFFFF; border: 1px solid #E5E0D5; border-radius: 18px; padding: 18px 20px"><div style="font-size: 34px; font-weight: 800; letter-spacing: -0.03em; line-height: 1.1">21 ans</div><div style="font-size: 14px; color: #4A515C">et déjà à mon compte</div></div>
+<div class="vz-pop2" style="background: #FFFFFF; border: 1px solid #E5E0D5; border-radius: 18px; padding: 18px 20px"><div style="font-size: 34px; font-weight: 800; letter-spacing: -0.03em; line-height: 1.1">3 ans</div><div style="font-size: 14px; color: #4A515C">à étudier la publicité Meta</div></div>
+<div class="vz-pop3" style="background: #0E1116; color: #FFFFFF; border-radius: 18px; padding: 18px 20px"><div style="font-size: 34px; font-weight: 800; letter-spacing: -0.03em; line-height: 1.1; color: #F2B544">8</div><div style="font-size: 14px; color: #C3C8D0">entreprises accompagnées</div></div>
+</div>
+<a href="#commencer" data-pick="call" class="vz-btn vz-reveal" style="align-self: flex-start; background: #0E1116; color: #FFFFFF; text-decoration: none; font-weight: 700; padding: 15px 26px; border-radius: 999px; display: inline-flex; gap: 10px; align-items: center">Échanger avec moi <span class="vz-arrow" aria-hidden="true">→</span></a>
+</div>
+</div>
+</section>
+
+<!-- AVIS CLIENTS (défilement continu) -->
+<section id="avis" style="padding: 104px 0; background: #EFEADF; overflow: hidden; position: relative">
+<span aria-hidden="true" class="vz-drift" style="position: absolute; left: 7%; top: 18%; font-size: 26px; font-weight: 300; color: #C98A0B">+</span>
+<span aria-hidden="true" class="vz-drift" style="position: absolute; right: 9%; top: 24%; font-size: 22px; font-weight: 300; color: #0E1116; animation-delay: 2.5s">+</span>
+<div style="max-width: 1200px; margin: 0 auto; padding: 0 24px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 20px; position: relative">
+<div class="vz-reveal" style="display: flex; flex-direction: column; gap: 16px; max-width: 760px">
+<span style="display: inline-flex; align-items: center; gap: 12px; font-size: 13px; font-weight: 800; letter-spacing: 0.16em; color: #5B6270"><span class="vz-bar" style="width: 28px; height: 3px; background: #F2B544"></span>AVIS CLIENTS</span>
+<h2 style="margin: 0; font-size: clamp(34px, 4.6vw, 58px); line-height: 1.05; font-weight: 800; letter-spacing: -0.03em">Ils en parlent <span class="vz-mark" style="font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400; padding: 0 4px; background-image: linear-gradient(#F2B544, #F2B544); background-repeat: no-repeat; background-position: 0 88%; background-size: 100% 38%">mieux que nous.</span></h2>
+</div>
+<span class="vz-reveal" style="display: inline-flex; align-items: center; gap: 10px; background: #FFFFFF; border: 1px solid #E5E0D5; border-radius: 999px; padding: 10px 18px; font-weight: 700; font-size: 15px"><span style="color: #C98A0B; letter-spacing: 2px">★★★★★</span>5/5 · avis clients</span>
+</div>
+<div class="vz-reveal" style="margin-top: 40px; overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent); mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent)">
+<div class="vz-reviews">
+<figure class="vz-card" style="margin: 0; width: min(440px, 80vw); flex-shrink: 0; box-sizing: border-box; background: #FFFFFF; border: 1px solid #E5E0D5; border-radius: 26px; padding: 30px; display: flex; flex-direction: column; gap: 16px; box-shadow: 0 14px 40px rgba(14,17,22,0.06)">
+<div style="display: flex; justify-content: space-between; align-items: flex-start"><span role="img" aria-label="5 étoiles sur 5" style="color: #C98A0B; font-size: 19px; letter-spacing: 3px">★★★★★</span><span aria-hidden="true" style="font-family: 'Instrument Serif', serif; font-size: 72px; line-height: .6; color: #F2B544">“</span></div>
+<blockquote style="margin: 0; font-family: 'Instrument Serif', serif; font-size: 22px; line-height: 1.4; color: #1C2129; flex-grow: 1">« Ça fait maintenant plusieurs mois qu’on travaille ensemble et franchement rien à redire. Très professionnel, toujours disponible et surtout les résultats sont là. Je recommande ! »</blockquote>
+<figcaption style="display: flex; align-items: center; gap: 12px; border-top: 1px solid #EFEADF; padding-top: 16px"><span style="width: 44px; height: 44px; border-radius: 999px; background: #0E1116; color: #F2B544; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 14px; flex-shrink: 0">GP</span><span style="display: flex; flex-direction: column; line-height: 1.35"><b>Guillaume Page</b><span style="font-size: 14px; color: #5B6270">GPS Électricité</span></span></figcaption>
+</figure>
+<figure class="vz-card" style="margin: 0; width: min(440px, 80vw); flex-shrink: 0; box-sizing: border-box; background: #FFFFFF; border: 1px solid #E5E0D5; border-radius: 26px; padding: 30px; display: flex; flex-direction: column; gap: 16px; box-shadow: 0 14px 40px rgba(14,17,22,0.06)">
+<div style="display: flex; justify-content: space-between; align-items: flex-start"><span role="img" aria-label="5 étoiles sur 5" style="color: #C98A0B; font-size: 19px; letter-spacing: 3px">★★★★★</span><span aria-hidden="true" style="font-family: 'Instrument Serif', serif; font-size: 72px; line-height: .6; color: #F2B544">“</span></div>
+<blockquote style="margin: 0; font-family: 'Instrument Serif', serif; font-size: 22px; line-height: 1.4; color: #1C2129; flex-grow: 1">« Très bonne expérience. J’ai pu développer mon activité et obtenir de nouvelles opportunités commerciales grâce à leur accompagnement. Une collaboration qui m’a vraiment apporté quelque chose. »</blockquote>
+<figcaption style="display: flex; align-items: center; gap: 12px; border-top: 1px solid #EFEADF; padding-top: 16px"><span style="width: 44px; height: 44px; border-radius: 999px; background: #0E1116; color: #F2B544; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 14px; flex-shrink: 0">LR</span><span style="display: flex; flex-direction: column; line-height: 1.35"><b>Loïc Rouge</b><span style="font-size: 14px; color: #5B6270">FJF Énergies</span></span></figcaption>
+</figure>
+<figure class="vz-card" style="margin: 0; width: min(440px, 80vw); flex-shrink: 0; box-sizing: border-box; background: #FFFFFF; border: 1px solid #E5E0D5; border-radius: 26px; padding: 30px; display: flex; flex-direction: column; gap: 16px; box-shadow: 0 14px 40px rgba(14,17,22,0.06)">
+<div style="display: flex; justify-content: space-between; align-items: flex-start"><span role="img" aria-label="5 étoiles sur 5" style="color: #C98A0B; font-size: 19px; letter-spacing: 3px">★★★★★</span><span aria-hidden="true" style="font-family: 'Instrument Serif', serif; font-size: 72px; line-height: .6; color: #F2B544">“</span></div>
+<blockquote style="margin: 0; font-family: 'Instrument Serif', serif; font-size: 22px; line-height: 1.4; color: #1C2129; flex-grow: 1">« Super accompagnement du début à la fin. Une vraie écoute, des conseils pertinents et un travail sérieux. Très satisfait de cette collaboration. »</blockquote>
+<figcaption style="display: flex; align-items: center; gap: 12px; border-top: 1px solid #EFEADF; padding-top: 16px"><span style="width: 44px; height: 44px; border-radius: 999px; background: #0E1116; color: #F2B544; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 14px; flex-shrink: 0">BD</span><span style="display: flex; flex-direction: column; line-height: 1.35"><b>Benjamin Duplaa</b><span style="font-size: 14px; color: #5B6270">Formation</span></span></figcaption>
+</figure>
+<figure aria-hidden="true" class="vz-card" style="margin: 0; width: min(440px, 80vw); flex-shrink: 0; box-sizing: border-box; background: #FFFFFF; border: 1px solid #E5E0D5; border-radius: 26px; padding: 30px; display: flex; flex-direction: column; gap: 16px; box-shadow: 0 14px 40px rgba(14,17,22,0.06)">
+<div style="display: flex; justify-content: space-between; align-items: flex-start"><span role="img" aria-label="5 étoiles sur 5" style="color: #C98A0B; font-size: 19px; letter-spacing: 3px">★★★★★</span><span aria-hidden="true" style="font-family: 'Instrument Serif', serif; font-size: 72px; line-height: .6; color: #F2B544">“</span></div>
+<blockquote style="margin: 0; font-family: 'Instrument Serif', serif; font-size: 22px; line-height: 1.4; color: #1C2129; flex-grow: 1">« Ça fait maintenant plusieurs mois qu’on travaille ensemble et franchement rien à redire. Très professionnel, toujours disponible et surtout les résultats sont là. Je recommande ! »</blockquote>
+<figcaption style="display: flex; align-items: center; gap: 12px; border-top: 1px solid #EFEADF; padding-top: 16px"><span style="width: 44px; height: 44px; border-radius: 999px; background: #0E1116; color: #F2B544; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 14px; flex-shrink: 0">GP</span><span style="display: flex; flex-direction: column; line-height: 1.35"><b>Guillaume Page</b><span style="font-size: 14px; color: #5B6270">GPS Électricité</span></span></figcaption>
+</figure>
+<figure aria-hidden="true" class="vz-card" style="margin: 0; width: min(440px, 80vw); flex-shrink: 0; box-sizing: border-box; background: #FFFFFF; border: 1px solid #E5E0D5; border-radius: 26px; padding: 30px; display: flex; flex-direction: column; gap: 16px; box-shadow: 0 14px 40px rgba(14,17,22,0.06)">
+<div style="display: flex; justify-content: space-between; align-items: flex-start"><span role="img" aria-label="5 étoiles sur 5" style="color: #C98A0B; font-size: 19px; letter-spacing: 3px">★★★★★</span><span aria-hidden="true" style="font-family: 'Instrument Serif', serif; font-size: 72px; line-height: .6; color: #F2B544">“</span></div>
+<blockquote style="margin: 0; font-family: 'Instrument Serif', serif; font-size: 22px; line-height: 1.4; color: #1C2129; flex-grow: 1">« Très bonne expérience. J’ai pu développer mon activité et obtenir de nouvelles opportunités commerciales grâce à leur accompagnement. Une collaboration qui m’a vraiment apporté quelque chose. »</blockquote>
+<figcaption style="display: flex; align-items: center; gap: 12px; border-top: 1px solid #EFEADF; padding-top: 16px"><span style="width: 44px; height: 44px; border-radius: 999px; background: #0E1116; color: #F2B544; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 14px; flex-shrink: 0">LR</span><span style="display: flex; flex-direction: column; line-height: 1.35"><b>Loïc Rouge</b><span style="font-size: 14px; color: #5B6270">FJF Énergies</span></span></figcaption>
+</figure>
+<figure aria-hidden="true" class="vz-card" style="margin: 0; width: min(440px, 80vw); flex-shrink: 0; box-sizing: border-box; background: #FFFFFF; border: 1px solid #E5E0D5; border-radius: 26px; padding: 30px; display: flex; flex-direction: column; gap: 16px; box-shadow: 0 14px 40px rgba(14,17,22,0.06)">
+<div style="display: flex; justify-content: space-between; align-items: flex-start"><span role="img" aria-label="5 étoiles sur 5" style="color: #C98A0B; font-size: 19px; letter-spacing: 3px">★★★★★</span><span aria-hidden="true" style="font-family: 'Instrument Serif', serif; font-size: 72px; line-height: .6; color: #F2B544">“</span></div>
+<blockquote style="margin: 0; font-family: 'Instrument Serif', serif; font-size: 22px; line-height: 1.4; color: #1C2129; flex-grow: 1">« Super accompagnement du début à la fin. Une vraie écoute, des conseils pertinents et un travail sérieux. Très satisfait de cette collaboration. »</blockquote>
+<figcaption style="display: flex; align-items: center; gap: 12px; border-top: 1px solid #EFEADF; padding-top: 16px"><span style="width: 44px; height: 44px; border-radius: 999px; background: #0E1116; color: #F2B544; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 14px; flex-shrink: 0">BD</span><span style="display: flex; flex-direction: column; line-height: 1.35"><b>Benjamin Duplaa</b><span style="font-size: 14px; color: #5B6270">Formation</span></span></figcaption>
+</figure>
+</div>
+</div>
+</section>
+
+<!-- 05 ON COMMENCE ENSEMBLE -->
+<section id="commencer" style="padding: 112px 0">
+<div style="max-width: 1240px; margin: 0 auto; padding: 0 20px">
+<div class="vz-reveal" style="background: #0E1116; color: #FFFFFF; border-radius: 40px; padding: clamp(32px, 5vw, 72px); display: flex; flex-wrap: wrap; gap: 48px; align-items: center; position: relative; overflow: hidden">
+<div aria-hidden="true" class="vz-spin" style="position: absolute; right: -200px; top: -200px; width: 560px; height: 560px; border-radius: 999px; border: 1px dashed rgba(255,255,255,0.12)"></div>
+<div aria-hidden="true" style="position: absolute; right: -90px; top: -90px; width: 340px; height: 340px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.07)"></div>
+<span aria-hidden="true" class="vz-drift" style="position: absolute; left: 4%; bottom: 10%; font-size: 28px; font-weight: 300; color: #F2B544">+</span>
+<span aria-hidden="true" class="vz-drift" style="position: absolute; left: 40%; top: 8%; font-size: 18px; font-weight: 300; color: rgba(255,255,255,0.35); animation-delay: 3s">+</span>
+<div style="flex: 1 1 340px; min-width: 0; display: flex; flex-direction: column; gap: 22px; position: relative">
+<span style="display: inline-flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 800; letter-spacing: 0.18em; color: #C3C8D0"><span style="width: 8px; height: 8px; border-radius: 999px; background: #F2B544"></span>05 · ON COMMENCE ENSEMBLE</span>
+<h2 style="margin: 0; font-size: clamp(40px, 5.4vw, 68px); line-height: 1.02; font-weight: 800; letter-spacing: -0.03em">On commence <span style="display: block; font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400; color: #F2B544">ensemble.</span></h2>
+<p style="margin: 0; font-size: 19px; color: #C3C8D0">Deux façons de démarrer. La plus simple : recevoir votre audit.</p>
+<div style="display: flex; flex-direction: column; gap: 12px">
+<button type="button" id="opt-audit" class="vz-opt" data-pick="audit">
+<span style="width: 44px; height: 44px; border-radius: 14px; background: #F2B544; display: flex; align-items: center; justify-content: center; flex-shrink: 0"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0E1116" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><path d="M14 2v6h6M8 13h8M8 17h5"></path></svg></span>
+<span style="display: flex; flex-direction: column; gap: 4px"><span style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap"><b style="font-size: 17px">Recevoir mon audit gratuit</b><span style="font-size: 11px; font-weight: 800; letter-spacing: 0.08em; color: #0E1116; background: #F2B544; padding: 3px 9px; border-radius: 999px">RECOMMANDÉ</span></span><span style="font-size: 15px; color: #C3C8D0; font-weight: 500">Sans appel. Votre visibilité analysée et un plan d’action, par e-mail sous 48 h.</span></span>
+</button>
+<button type="button" id="opt-call" class="vz-opt" data-pick="call">
+<span style="width: 44px; height: 44px; border-radius: 14px; background: #FFFFFF; display: flex; align-items: center; justify-content: center; flex-shrink: 0"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0E1116" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"></path></svg></span>
+<span style="display: flex; flex-direction: column; gap: 4px"><b style="font-size: 17px">Réserver un appel</b><span style="font-size: 15px; color: #C3C8D0; font-weight: 500">30 minutes en visio avec Oubey, pour aller droit au but.</span></span>
+</button>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 10px; padding-top: 4px">
+<span style="border: 1px solid rgba(255,255,255,0.18); border-radius: 999px; padding: 7px 14px; font-size: 14px; color: #D5D9DF">100 % gratuit</span>
+<span style="border: 1px solid rgba(255,255,255,0.18); border-radius: 999px; padding: 7px 14px; font-size: 14px; color: #D5D9DF">Sans engagement</span>
+</div>
+</div>
+
+<div class="vz-pop" id="vz-booking" style="flex: 1.2 1 440px; min-width: 0; background: #FFFFFF; color: #0E1116; border-radius: 28px; padding: clamp(24px, 3.5vw, 40px); display: flex; flex-direction: column; gap: 22px; position: relative; box-shadow: 0 30px 70px rgba(0,0,0,0.35)">
+<div role="group" aria-label="Type de demande" style="display: flex; gap: 6px; background: #EFEADF; border-radius: 999px; padding: 5px">
+<button type="button" class="vz-seg" data-pick="audit" id="seg-audit">Audit gratuit</button>
+<button type="button" class="vz-seg" data-pick="call" id="seg-call">Appel de 30 min</button>
+</div>
+<div style="height: 5px; background: #EFEDE8; border-radius: 999px; overflow: hidden"><div id="vz-bar" style="width: 25%; height: 100%; background: #0E1116; border-radius: 999px; transition: width .4s ease"></div></div>
+<div id="vz-tabs" style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 12px"></div>
+
+<form name="audit" id="form-audit" method="POST" action="https://formsubmit.co/direction@ozvizion.fr" novalidate style="display: flex; flex-direction: column; gap: 22px">
+<input type="hidden" name="_subject" value="🟡 Nouvelle demande d'audit — OZ Vizion">
+<input type="hidden" name="_captcha" value="false">
+<input type="hidden" name="_template" value="table">
+<input type="hidden" name="form-name" value="audit">
+<p hidden><label>Ne pas remplir : <input name="bot-field"></label></p>
+<div class="vz-step" data-step="0" style="display: flex; flex-direction: column; gap: 16px">
+<h3 style="margin: 0; font-size: 24px; font-weight: 800">Votre entreprise</h3>
+<div class="vz-field"><label for="a-entreprise">Nom de l’entreprise</label><input class="vz-input" id="a-entreprise" name="entreprise" type="text" autocomplete="organization" required></div>
+<div class="vz-field"><label for="a-activite">Votre activité</label><input class="vz-input" id="a-activite" name="activite" type="text" required></div>
+<div class="vz-field"><label for="a-zone">Zone d’intervention</label><input class="vz-input" id="a-zone" name="zone" type="text"></div>
+<div class="vz-field"><label for="a-site">Site, page Facebook ou Instagram <span style="font-weight: 500; color: #6B7280">(facultatif)</span></label><input class="vz-input" id="a-site" name="site" type="text"></div>
+</div>
+<div class="vz-step" data-step="1" hidden style="display: flex; flex-direction: column; gap: 18px">
+<h3 style="margin: 0; font-size: 24px; font-weight: 800">Vos objectifs</h3>
+<fieldset style="border: none; margin: 0; padding: 0"><legend style="font-weight: 700; font-size: 15px; margin-bottom: 10px; padding: 0">Votre priorité</legend>
+<div style="display: flex; flex-wrap: wrap; gap: 10px">
+<label class="vz-radio"><input type="radio" name="priorite" value="Plus de demandes"><span>Plus de demandes</span></label>
+<label class="vz-radio"><input type="radio" name="priorite" value="Un flux plus régulier"><span>Un flux plus régulier</span></label>
+<label class="vz-radio"><input type="radio" name="priorite" value="Ma première campagne"><span>Ma première campagne</span></label>
+</div></fieldset>
+<fieldset style="border: none; margin: 0; padding: 0"><legend style="font-weight: 700; font-size: 15px; margin-bottom: 10px; padding: 0">Budget publicitaire envisagé</legend>
+<div style="display: flex; flex-wrap: wrap; gap: 10px">
+<label class="vz-radio"><input type="radio" name="budget" value="Moins de 500 € / mois"><span>Moins de 500 € / mois</span></label>
+<label class="vz-radio"><input type="radio" name="budget" value="500 à 1 500 € / mois"><span>500 à 1 500 € / mois</span></label>
+<label class="vz-radio"><input type="radio" name="budget" value="Plus de 1 500 € / mois"><span>Plus de 1 500 € / mois</span></label>
+<label class="vz-radio"><input type="radio" name="budget" value="Je ne sais pas encore"><span>Je ne sais pas encore</span></label>
+</div></fieldset>
+</div>
+<div class="vz-step" data-step="2" hidden style="display: flex; flex-direction: column; gap: 16px">
+<h3 style="margin: 0; font-size: 24px; font-weight: 800">Où vous envoyer l’audit ?</h3>
+<div class="vz-field"><label for="a-nom">Prénom et nom</label><input class="vz-input" id="a-nom" name="nom" type="text" autocomplete="name" required></div>
+<div style="display: flex; flex-wrap: wrap; gap: 12px">
+<div class="vz-field" style="flex: 1 1 200px; min-width: 0"><label for="a-tel">Téléphone</label><input class="vz-input" id="a-tel" name="telephone" type="tel" autocomplete="tel"></div>
+<div class="vz-field" style="flex: 1 1 200px; min-width: 0"><label for="a-email">E-mail</label><input class="vz-input" id="a-email" name="email" type="email" autocomplete="email" required></div>
+</div>
+<label style="display: flex; gap: 10px; align-items: flex-start; font-size: 14px; color: #4A515C"><input type="checkbox" name="consentement" value="oui" required style="width: 20px; height: 20px; margin-top: 1px; accent-color: #0E1116; flex-shrink: 0"><span>J’accepte d’être recontacté par OZ Vizion au sujet de ma demande (voir la <a href="mentions-legales.html" style="color: #0E1116">politique de confidentialité</a>).</span></label>
+</div>
+<div class="vz-step" data-step="3" hidden style="display: flex; flex-direction: column; gap: 14px; align-items: flex-start">
+<span style="width: 56px; height: 56px; border-radius: 999px; background: #F2B544; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#0E1116" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg></span>
+<h3 style="margin: 0; font-size: 24px; font-weight: 800">Demande reçue, merci !</h3>
+<p style="margin: 0; color: #4A515C">Votre audit gratuit vous sera envoyé par e-mail sous 48 h ouvrées : analyse de votre visibilité actuelle et plan d’action concret.</p>
+<p style="margin: 0; color: #4A515C">Envie d’en parler de vive voix ? <button type="button" data-pick="call" style="background: none; border: none; padding: 0; font-family: inherit; font-size: inherit; font-weight: 800; color: #0E1116; text-decoration: underline; cursor: pointer">Réservez un appel</button>.</p>
+</div>
+<p class="vz-error" role="alert" hidden style="margin: 0; color: #B42318; font-size: 14px; font-weight: 600"></p>
+<div style="display: flex; justify-content: space-between; align-items: center; gap: 12px">
+<button type="button" class="vz-back" style="background: transparent; border: none; font-family: inherit; font-size: 15px; font-weight: 700; color: #4A515C; cursor: pointer; min-height: 44px; padding: 0 4px">← Retour</button>
+<span></span>
+<button type="button" class="vz-next vz-btn" style="background: #0E1116; color: #FFFFFF; border: none; border-radius: 999px; padding: 15px 28px; font-family: inherit; font-size: 16px; font-weight: 700; cursor: pointer; min-height: 48px">Continuer <span class="vz-arrow" aria-hidden="true">→</span></button>
+</div>
+</form>
+
+<form name="appel" id="form-call" method="POST" action="https://formsubmit.co/direction@ozvizion.fr" novalidate hidden style="display: flex; flex-direction: column; gap: 22px">
+<input type="hidden" name="_subject" value="📞 Nouvelle demande d'appel — OZ Vizion">
+<input type="hidden" name="_captcha" value="false">
+<input type="hidden" name="_template" value="table">
+<input type="hidden" name="form-name" value="appel">
+<p hidden><label>Ne pas remplir : <input name="bot-field"></label></p>
+<div class="vz-step" data-step="0" style="display: flex; flex-direction: column; gap: 16px">
+<h3 style="margin: 0; font-size: 24px; font-weight: 800">Vos coordonnées</h3>
+<div class="vz-field"><label for="c-entreprise">Nom de l’entreprise</label><input class="vz-input" id="c-entreprise" name="entreprise" type="text" autocomplete="organization" required></div>
+<div class="vz-field"><label for="c-nom">Prénom et nom</label><input class="vz-input" id="c-nom" name="nom" type="text" autocomplete="name" required></div>
+<div style="display: flex; flex-wrap: wrap; gap: 12px">
+<div class="vz-field" style="flex: 1 1 200px; min-width: 0"><label for="c-tel">Téléphone</label><input class="vz-input" id="c-tel" name="telephone" type="tel" autocomplete="tel" required></div>
+<div class="vz-field" style="flex: 1 1 200px; min-width: 0"><label for="c-email">E-mail</label><input class="vz-input" id="c-email" name="email" type="email" autocomplete="email" required></div>
+</div>
+<label style="display: flex; gap: 10px; align-items: flex-start; font-size: 14px; color: #4A515C"><input type="checkbox" name="consentement" value="oui" required style="width: 20px; height: 20px; margin-top: 1px; accent-color: #0E1116; flex-shrink: 0"><span>J’accepte d’être recontacté par OZ Vizion au sujet de ma demande (voir la <a href="mentions-legales.html" style="color: #0E1116">politique de confidentialité</a>).</span></label>
+</div>
+<div class="vz-step" data-step="1" hidden style="display: flex; flex-direction: column; gap: 14px">
+<h3 style="margin: 0; font-size: 24px; font-weight: 800">Choisissez votre créneau</h3>
+<div id="vz-calendly" style="width: 100%; min-width: 280px; height: 660px; border: 1px solid #E5E0D5; border-radius: 20px; overflow: hidden; background: #FFFFFF"></div>
+<a href="https://calendly.com/oubey77150/appel-strategique-de-selection" target="_blank" rel="noopener" style="font-size: 14px; font-weight: 700; color: #0E1116">Ouvrir l’agenda dans un nouvel onglet ↗</a>
+</div>
+<p class="vz-error" role="alert" hidden style="margin: 0; color: #B42318; font-size: 14px; font-weight: 600"></p>
+<div style="display: flex; justify-content: space-between; align-items: center; gap: 12px">
+<button type="button" class="vz-back" style="background: transparent; border: none; font-family: inherit; font-size: 15px; font-weight: 700; color: #4A515C; cursor: pointer; min-height: 44px; padding: 0 4px">← Retour</button>
+<span></span>
+<button type="button" class="vz-next vz-btn" style="background: #0E1116; color: #FFFFFF; border: none; border-radius: 999px; padding: 15px 28px; font-family: inherit; font-size: 16px; font-weight: 700; cursor: pointer; min-height: 48px">Continuer <span class="vz-arrow" aria-hidden="true">→</span></button>
+</div>
+</form>
+</div>
+</div>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer style="background: #EFEADF; border-top: 1px solid #E5E0D5; overflow: hidden">
+<div style="max-width: 1200px; margin: 0 auto; padding: 80px 24px 0; display: flex; flex-direction: column; gap: 56px">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 48px">
+<div class="vz-reveal" style="flex: 1 1 320px; min-width: 0; max-width: 400px; display: flex; flex-direction: column; gap: 18px">
+<div style="display: flex; align-items: baseline; gap: 10px"><span style="font-family: 'Instrument Serif', serif; font-style: italic; font-size: 40px; line-height: 1; padding: 0 4px; background: linear-gradient(transparent 62%, #F2B544 62%)">OZ</span><span style="font-size: 19px; font-weight: 800; letter-spacing: 0.24em">VIZION</span></div>
+<p style="margin: 0; color: #4A515C">Un système clé en main pour avoir plus de clients, sans y passer vos soirées. Vous faites votre métier, on remplit votre agenda.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 12px; align-items: center">
+<a href="#commencer" data-pick="audit" class="vz-btn" style="background: #0E1116; color: #FFFFFF; text-decoration: none; font-weight: 700; padding: 13px 22px; border-radius: 999px; font-size: 15px; display: inline-flex; gap: 8px; align-items: center">Recevoir mon audit <span class="vz-arrow" aria-hidden="true">→</span></a>
+<a href="https://www.instagram.com/oz.vizion/" aria-label="Instagram d’OZ Vizion" class="vz-btn" style="width: 46px; height: 46px; border-radius: 999px; border: 1px solid #D9D3C6; background: #FFFFFF; display: inline-flex; align-items: center; justify-content: center; color: #0E1116"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="0.6"></circle></svg></a>
+</div>
+</div>
+<div class="vz-reveal vz-d1" style="display: flex; flex-wrap: wrap; gap: 56px">
+<div style="display: flex; flex-direction: column; gap: 12px; font-size: 15px">
+<span style="font-size: 12px; font-weight: 800; letter-spacing: 0.16em; color: #5B6270">LE SITE</span>
+<a href="#constat" style="text-decoration: none">Le constat</a>
+<a href="#inaction" style="text-decoration: none">Le calculateur</a>
+<a href="#offre" style="text-decoration: none">L’offre</a>
+<a href="#moi" style="text-decoration: none">Qui suis-je</a>
+<a href="#avis" style="text-decoration: none">Avis clients</a>
+</div>
+<div style="display: flex; flex-direction: column; gap: 12px; font-size: 15px">
+<span style="font-size: 12px; font-weight: 800; letter-spacing: 0.16em; color: #5B6270">CONTACT</span>
+<a href="mailto:direction@ozvizion.fr?subject=Demande%20d%E2%80%99information%20%E2%80%94%20OZ%20Vizion" style="text-decoration: none">direction@ozvizion.fr</a>
+<a href="tel:+33620288502" style="text-decoration: none">06 20 28 85 02</a>
+<a href="https://www.instagram.com/oz.vizion/" style="text-decoration: none">@oz.vizion</a>
+<span style="color: #4A515C">Vaux-sur-Seine (78) · rendez-vous en visio partout en France</span>
+</div>
+<div style="display: flex; flex-direction: column; gap: 12px; font-size: 15px">
+<span style="font-size: 12px; font-weight: 800; letter-spacing: 0.16em; color: #5B6270">LÉGAL</span>
+<a href="mentions-legales.html" style="text-decoration: none">Mentions légales</a>
+<a href="mentions-legales.html" style="text-decoration: none">Confidentialité</a>
+<a href="cgv.html" style="text-decoration: none">Conditions générales</a>
+</div>
+</div>
+</div>
+<div style="border-top: 1px solid #DDD7CA; padding-top: 22px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; font-size: 13px; color: #5B6270">
+<span>© 2026 <span style="white-space: nowrap; font-weight: 800; color: #0E1116"><span style="font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400; font-size: 1.15em; padding: 0 3px; background: linear-gradient(transparent 58%, #F2B544 58%)">OZ</span>&nbsp;<span style="letter-spacing: 0.14em; font-size: 0.86em">VIZION</span></span> · Oubey Ourzikene EI · SIRET 131 864 506 00012 · 78740 Vaux-sur-Seine</span>
+<span>TVA non applicable, art. 293 B du CGI</span>
+</div>
+</div>
+<div aria-hidden="true" class="vz-reveal" style="display: flex; justify-content: center; align-items: baseline; gap: 2vw; padding: 24px 0 0; line-height: 0.78; white-space: nowrap; user-select: none">
+<span class="vz-left" style="display: inline-block; font-family: 'Instrument Serif', serif; font-style: italic; font-size: 23vw; color: #0E1116">OZ</span>
+<span class="vz-right" style="display: inline-block; font-size: 15vw; font-weight: 800; letter-spacing: -0.05em; color: #E2DCCF">VIZION</span>
+</div>
+</footer>
+
+</div>
+
+<script>
+(function () {
+  var ACC = '#F2B544';
+  var CAL = 'https://calendly.com/oubey77150/appel-strategique-de-selection';
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function fmt(n) { return String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, ' '); }
+  function setText(id, t) { var e = document.getElementById(id); if (e) e.textContent = t; }
+
+  /* Compteurs des chiffres */
+  var proof = document.getElementById('vz-proof');
+  var counters = document.querySelectorAll('.vz-count');
+  function label(el, v) { return (el.dataset.prefix || '') + fmt(v) + (el.dataset.suffix || ''); }
+  if (proof && counters.length && 'IntersectionObserver' in window && !reduce) {
+    counters.forEach(function (el) { el.textContent = label(el, 0); });
+    var io = new IntersectionObserver(function (entries) {
+      if (!entries[0].isIntersecting) return;
+      io.disconnect();
+      var t0 = null;
+      var tick = function (t) {
+        if (t0 === null) t0 = t;
+        var p = Math.min(1, (t - t0) / 1800);
+        var e = 1 - Math.pow(1 - p, 3);
+        counters.forEach(function (el) { el.textContent = label(el, +el.dataset.to * e); });
+        if (p < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    }, { threshold: 0.3 });
+    io.observe(proof);
+  }
+
+  /* Calculateur */
+  var cv = document.getElementById('vz-value');
+  var cl = document.getElementById('vz-lost');
+  function track(el, pct) {
+    el.style.background = 'linear-gradient(90deg, ' + ACC + ' 0%, ' + ACC + ' ' + pct + '%, #2A313B ' + pct + '%, #2A313B 100%)';
+  }
+  function calc() {
+    var v = +cv.value, l = +cl.value, m = v * l;
+    setText('calc-value-label', fmt(v) + ' €');
+    setText('calc-lost-label', String(l));
+    setText('calc-year', '− ' + fmt(m * 12) + ' €');
+    setText('calc-month', '− ' + fmt(m) + ' €');
+    setText('calc-day', '− ' + fmt(m * 12 / 365) + ' €');
+    track(cv, (v - 100) / 199);
+    track(cl, (l - 1) / 29 * 100);
+  }
+  if (cv && cl) { cv.addEventListener('input', calc); cl.addEventListener('input', calc); calc(); }
+
+  /* Réservation : audit ou appel */
+  var forms = { audit: document.getElementById('form-audit'), call: document.getElementById('form-call') };
+  if (!forms.audit || !forms.call) return;
+  var tabsDef = { audit: ['Entreprise', 'Objectifs', 'Coordonnées', 'Envoyé'], call: ['Coordonnées', 'Créneau'] };
+  var mode = 'audit';
+  var step = 0;
+
+  function render() {
+    ['audit', 'call'].forEach(function (m) {
+      var on = m === mode;
+      forms[m].hidden = !on;
+      var seg = document.getElementById('seg-' + m);
+      if (seg) { seg.classList.toggle('is-on', on); seg.setAttribute('aria-pressed', on ? 'true' : 'false'); }
+      var opt = document.getElementById('opt-' + m);
+      if (opt) { opt.classList.toggle('is-on', on); opt.setAttribute('aria-pressed', on ? 'true' : 'false'); }
+    });
+    var f = forms[mode];
+    var last = tabsDef[mode].length - 1;
+    f.querySelectorAll('.vz-step').forEach(function (s) { s.hidden = +s.dataset.step !== step; });
+    var tabs = document.getElementById('vz-tabs');
+    tabs.innerHTML = '';
+    tabsDef[mode].forEach(function (lb, i) {
+      var sp = document.createElement('span');
+      sp.className = 'vz-tab' + (i === step ? ' is-active' : i < step ? ' is-done' : '');
+      var b = document.createElement('b');
+      b.textContent = i < step ? '✓' : String(i + 1);
+      sp.appendChild(b);
+      sp.appendChild(document.createTextNode(lb));
+      tabs.appendChild(sp);
+    });
+    document.getElementById('vz-bar').style.width = Math.round((step + 1) / (last + 1) * 100) + '%';
+    var back = f.querySelector('.vz-back');
+    var next = f.querySelector('.vz-next');
+    back.hidden = step === 0 || (mode === 'audit' && step === last);
+    next.hidden = step === last;
+    next.firstChild.nodeValue = (mode === 'audit' && step === 2) ? 'Recevoir mon audit ' : (mode === 'call' && step === 0) ? 'Choisir mon créneau ' : 'Continuer ';
+    f.querySelector('.vz-error').hidden = true;
+  }
+
+  function pick(m) {
+    if (m !== mode) { mode = m; step = 0; }
+    else if (mode === 'audit' && step === 3) { step = 0; }
+    render();
+  }
+  document.querySelectorAll('[data-pick]').forEach(function (el) {
+    el.addEventListener('click', function () { pick(el.dataset.pick); });
+  });
+
+  function valid(f) {
+    var ok = true;
+    f.querySelectorAll('.vz-step[data-step="' + step + '"] [required]').forEach(function (i) {
+      if (ok && !i.checkValidity()) { i.reportValidity(); ok = false; }
+    });
+    return ok;
+  }
+  function send(f) {
+    var fd = new FormData(f);
+    var obj = {};
+    fd.forEach(function(v, k) { obj[k] = v; });
+    return fetch('https://formsubmit.co/ajax/direction@ozvizion.fr', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(obj)
+    });
+  }
+  function showErr(f, msg) { var e = f.querySelector('.vz-error'); e.textContent = msg; e.hidden = false; }
+
+  function openCal(f) {
+    var fd = new FormData(f);
+    var box = document.getElementById('vz-calendly');
+    var opts = {
+      url: CAL + '?primary_color=f2b544&text_color=0e1116&background_color=ffffff',
+      parentElement: box,
+      prefill: {
+        name: fd.get('nom') || '',
+        email: fd.get('email') || '',
+        customAnswers: { a1: 'Entreprise : ' + (fd.get('entreprise') || '') + ' · Tél. ' + (fd.get('telephone') || '') }
+      }
+    };
+    var go = function () { box.innerHTML = ''; window.Calendly.initInlineWidget(opts); };
+    if (window.Calendly) { go(); return; }
+    var s = document.createElement('script');
+    s.src = 'https://assets.calendly.com/assets/external/widget.js';
+    s.async = true;
+    s.onload = go;
+    document.head.appendChild(s);
+  }
+
+  Object.keys(forms).forEach(function (m) {
+    var f = forms[m];
+    f.addEventListener('submit', function (e) { e.preventDefault(); });
+    f.querySelector('.vz-back').addEventListener('click', function () { step = Math.max(0, step - 1); render(); });
+    f.querySelector('.vz-next').addEventListener('click', function () {
+      if (!valid(f)) return;
+      var btn = this;
+      if (m === 'audit' && step === 2) {
+        btn.disabled = true;
+        send(f).then(function (r) {
+          if (!r.ok) throw new Error('envoi');
+          step = 3; render();
+        }).catch(function () {
+          showErr(f, 'L’envoi n’a pas abouti. Réessayez, ou écrivez-nous à direction@ozvizion.fr.');
+        }).then(function () { btn.disabled = false; });
+        return;
+      }
+      if (m === 'call' && step === 0) {
+        send(f).catch(function () {});
+        step = 1; render(); openCal(f);
+        return;
+      }
+      step += 1;
+      render();
+    });
+  });
+
+  render();
+})();
+</script>
+</body>
+</html>

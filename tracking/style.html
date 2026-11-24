@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Direction artistique · 30.04.2027</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;800&family=Manrope:wght@400;600;800&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Inter:wght@400;600;800&family=Space+Grotesk:wght@500;700&family=JetBrains+Mono:wght@400;700&family=IBM+Plex+Mono:wght@400;600&family=Space+Mono:wght@400;700&display=swap">
+<style>
+@property --a { syntax:'<angle>'; inherits:false; initial-value:0deg }
+
+/* ---------- les trois directions ---------- */
+.dir{
+  --bg:#060A07; --s1:#0D1510; --s2:#121C15; --line:#1E2A22;
+  --fg:#E8F0E6; --mut:#8EA394;
+  --acc:#35D08A; --acc2:#E3B64B; --on-acc:#04140C;
+  --glow:rgba(53,208,138,.45);
+  --disp:"Sora",system-ui,sans-serif; --body:"Manrope",system-ui,sans-serif; --mono:"JetBrains Mono",monospace;
+  --dw:800;
+}
+.dir[data-d="2"]{
+  --bg:#0A0A0B; --s1:#121214; --s2:#17181A; --line:#26272B;
+  --fg:#F2F0EA; --mut:#9A978E;
+  --acc:#D9B44F; --acc2:#3E8265; --on-acc:#17130A;
+  --glow:rgba(217,180,79,.42);
+  --disp:"Bricolage Grotesque",system-ui,sans-serif; --body:"Inter",system-ui,sans-serif; --mono:"IBM Plex Mono",monospace;
+  --dw:800;
+}
+.dir[data-d="3"]{
+  --bg:#0B0D0E; --s1:#14181A; --s2:#1A2023; --line:#263033;
+  --fg:#EDF2F1; --mut:#8E9C9B;
+  --acc:#2FD4A8; --acc2:#C98A3A; --on-acc:#04140F;
+  --glow:rgba(47,212,168,.4);
+  --disp:"Space Grotesk",system-ui,sans-serif; --body:"Inter",system-ui,sans-serif; --mono:"Space Mono",monospace;
+  --dw:700;
+}
+
+*{box-sizing:border-box}
+body{margin:0;background:#050607;color:#E9EDEA;font-family:"Inter",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1180px;margin:0 auto;padding:28px 16px 80px}
+.top{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:26px}
+h1{font:800 clamp(26px,4vw,42px)/1.05 "Sora",sans-serif;margin:0;letter-spacing:-.03em}
+.sub{color:#8C938E;font-size:14.5px;margin-top:8px;max-width:62ch;line-height:1.55}
+.switch{display:flex;gap:6px;background:#101214;border:1px solid #1E2225;border-radius:99px;padding:5px}
+.switch button{appearance:none;border:0;background:transparent;color:#99A09B;font:600 13px/1 "Inter",sans-serif;padding:10px 16px;border-radius:99px;cursor:pointer;transition:.18s}
+.switch button[aria-pressed="true"]{background:#E9EDEA;color:#0A0C0B}
+
+/* ---------- la maquette ---------- */
+.dir{background:var(--bg);color:var(--fg);font-family:var(--body);border:1px solid var(--line);border-radius:26px;padding:clamp(18px,3vw,34px);margin-top:18px}
+.dname{font:var(--dw) clamp(22px,3vw,32px)/1 var(--disp);letter-spacing:-.025em}
+.dmeta{color:var(--mut);font-size:13px;margin-top:8px}
+.sw{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0 26px}
+.sw i{width:62px;height:62px;border-radius:16px;display:grid;place-items:end center;padding-bottom:5px;font:400 9px/1 var(--mono);color:#0008;border:1px solid var(--line)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:18px}
+.card{background:var(--s1);border:1px solid var(--line);border-radius:20px;padding:18px}
+.k{font:600 10.5px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--mut)}
+.h3{font:var(--dw) 17px/1.2 var(--disp);margin:10px 0 0;letter-spacing:-.01em}
+.p{color:var(--mut);font-size:13.5px;line-height:1.55;margin:8px 0 0}
+.num{font-family:var(--mono);font-variant-numeric:tabular-nums}
+
+/* héros */
+.hero{background:var(--s2);border:1px solid var(--line);border-radius:22px;padding:22px;overflow:hidden;position:relative}
+.hero::after{content:"";position:absolute;right:-90px;top:-110px;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,var(--glow),transparent 62%);pointer-events:none}
+.jb{font:var(--dw) clamp(46px,7vw,76px)/.9 var(--disp);letter-spacing:-.045em;margin:10px 0 0;position:relative}
+.jb span{color:var(--acc)}
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:18px;position:relative}
+.kpi{background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:11px 12px}
+.kpi b{font:700 19px/1 var(--mono);display:block}
+.kpi small{color:var(--mut);font-size:11px;display:block;margin-top:5px;line-height:1.3}
+.bar{height:6px;border-radius:99px;background:var(--line);overflow:hidden;margin-top:10px}
+.bar i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,var(--acc),var(--acc2))}
+
+/* boutons, pastilles, segments */
+.row{display:flex;gap:9px;flex-wrap:wrap;align-items:center;margin-top:14px}
+.btn{appearance:none;border:1px solid var(--line);background:var(--s2);color:var(--fg);font:600 13px/1 var(--body);padding:11px 15px;border-radius:12px;cursor:pointer;transition:.18s}
+.btn:hover{border-color:var(--acc);transform:translateY(-1px)}
+.btn.pri{background:var(--acc);color:var(--on-acc);border-color:transparent;font-weight:800}
+.btn.pri:hover{filter:brightness(1.08)}
+.pill{font:700 11px/1 var(--mono);padding:6px 9px;border-radius:99px;background:var(--s2);border:1px solid var(--line);color:var(--mut)}
+.pill.on{background:var(--acc);color:var(--on-acc);border-color:transparent}
+.dot{min-width:18px;height:18px;border-radius:99px;background:var(--acc);color:var(--on-acc);font:800 10px/18px var(--body);text-align:center;display:inline-block;padding:0 5px}
+.seg{display:inline-flex;background:var(--s2);border:1px solid var(--line);border-radius:99px;padding:4px}
+.seg button{appearance:none;border:0;background:transparent;color:var(--mut);font:600 12.5px/1 var(--body);padding:9px 14px;border-radius:99px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--acc);color:var(--on-acc);font-weight:800}
+
+/* ---------- l'arbre ---------- */
+.tree{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:4px;margin-top:6px}
+.br{display:flex;flex-direction:column;align-items:center;gap:0}
+.brh{font:var(--dw) 12.5px/1 var(--disp);margin-bottom:4px;letter-spacing:-.01em}
+.brs{font:400 10px/1 var(--mono);color:var(--mut);margin-bottom:12px}
+.node{position:relative;display:flex;flex-direction:column;align-items:center;gap:7px;padding:6px 2px 14px;width:100%;cursor:pointer;background:none;border:0;color:inherit;font:inherit}
+.ni{position:relative;width:58px;height:58px;border-radius:50%;display:grid;place-items:center;background:var(--s2);border:1px solid var(--line);transition:transform .25s cubic-bezier(.2,.9,.25,1)}
+.ni svg{width:24px;height:24px;stroke:var(--fg);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;opacity:.9;transition:.25s}
+.node.lock .ni{background:var(--bg)}
+.node.lock .ni svg{stroke:var(--mut);opacity:.5}
+.node.lock .nl,.node.lock .nv{color:var(--mut);opacity:.55}
+.ring{position:absolute;inset:-5px;border-radius:50%;padding:2px;opacity:0;transition:opacity .25s;
+  background:conic-gradient(from var(--a), transparent 0 55%, var(--acc) 78%, var(--acc2) 92%, transparent 100%);
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude}
+.node.on .ring{opacity:.85}
+.node:hover .ring,.node:focus-visible .ring{opacity:1;animation:sp 2.2s linear infinite}
+.node:hover .ni{transform:translateY(-3px) scale(1.07)}
+.node:hover .ni svg{stroke:var(--acc);opacity:1}
+.node:hover .nl{color:var(--acc)}
+@keyframes sp{to{--a:360deg}}
+.nl{font:600 11.5px/1.2 var(--body);text-align:center;transition:.2s}
+.nv{font:700 9.5px/1 var(--mono);color:var(--mut);background:var(--s2);border:1px solid var(--line);padding:4px 7px;border-radius:99px}
+.node.on .nv{background:var(--acc);color:var(--on-acc);border-color:transparent}
+.lk{width:2px;height:22px;background:var(--line);position:relative;overflow:hidden}
+.lk.done{background:linear-gradient(180deg,var(--acc),var(--acc2))}
+.br:hover .lk::after{content:"";position:absolute;inset:0;background:var(--acc);animation:fl 1.1s ease-in-out infinite}
+@keyframes fl{0%{transform:translateY(-100%)}100%{transform:translateY(100%)}}
+@media (prefers-reduced-motion:reduce){ .node:hover .ring,.br:hover .lk::after{animation:none} }
+
+/* liste des branches proposées */
+.plan{margin-top:34px;background:#0C0E0F;border:1px solid #1C2022;border-radius:22px;padding:clamp(18px,3vw,30px)}
+.plan h2{font:800 clamp(20px,3vw,28px)/1.1 "Sora",sans-serif;margin:0 0 6px;letter-spacing:-.025em}
+.plan .lead{color:#8C938E;font-size:14px;line-height:1.6;max-width:70ch}
+.bl{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-top:20px}
+.bx{background:#111416;border:1px solid #1E2325;border-radius:16px;padding:16px}
+.bx b{font:700 14px/1 "Sora",sans-serif;display:block;margin-bottom:4px}
+.bx .t{color:#7E8784;font-size:11.5px;font-family:"JetBrains Mono",monospace;letter-spacing:.08em;text-transform:uppercase}
+.bx ul{margin:10px 0 0;padding-left:16px;color:#AEB6B2;font-size:13px;line-height:1.75}
+.bx li span{color:#6F7875;font-size:11.5px}
+.foot{margin-top:30px;color:#8C938E;font-size:14px;line-height:1.6}
+.foot b{color:#E9EDEA}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top">
+    <div>
+      <h1>Trois directions. Tu en choisis une.</h1>
+      <p class="sub">Même app, trois habillages complets : couleurs, typographie, boutons, héros, et un bout de l'arbre de compétences avec l'animation au survol. <b>Passe la souris sur les nœuds</b> — c'est l'effet que tu auras partout. Dis-moi le numéro, et j'applique sur les 19 écrans.</p>
+    </div>
+    <div class="switch" role="group" aria-label="Changer de direction">
+      <button data-s="1" aria-pressed="true">1 · Jungle</button>
+      <button data-s="2" aria-pressed="false">2 · Or de nuit</button>
+      <button data-s="3" aria-pressed="false">3 · Jade &amp; graphite</button>
+    </div>
+  </div>
+
+  <section class="dir" id="demo" data-d="1">
+    <div class="dname" id="dn">Jungle</div>
+    <div class="dmeta" id="dm">Vert profond, jade, une touche d'or. Titres Sora · texte Manrope · chiffres JetBrains Mono.</div>
+    <div class="sw" id="sw"></div>
+
+    <div class="grid">
+      <div class="hero">
+        <div class="k">Mardi 24 novembre · jour 23 / 180</div>
+        <div class="jb">J-<span>157</span></div>
+        <div class="kpis">
+          <div class="kpi"><b class="num">0 <small style="opacity:.5">/ 2 000 €</small></b><small>encaissés cette semaine</small><div class="bar"><i style="width:4%"></i></div></div>
+          <div class="kpi"><b class="num">0 <small style="opacity:.5">/ 6</small></b><small>RDV posés aujourd'hui</small><div class="bar"><i style="width:0"></i></div></div>
+          <div class="kpi"><b class="num">0 <small style="opacity:.5">/ 100</small></b><small>appels aujourd'hui</small><div class="bar"><i style="width:0"></i></div></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:10px">
+          <div class="k">À remplir maintenant</div><span class="dot">3</span>
+        </div>
+        <div class="row">
+          <button class="btn pri">Préparer demain</button>
+          <button class="btn">Noter tes appels</button>
+          <button class="btn">Te peser</button>
+        </div>
+        <p class="p">Touche un bouton : il t'emmène là où ça se note.</p>
+        <div class="row" style="margin-top:16px">
+          <div class="seg"><button aria-pressed="true">Maintenant</button><button aria-pressed="false">Programme</button><button aria-pressed="false">Bilan</button></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:10px">
+          <div class="k">Dubaï · 31 décembre</div><span class="pill">J−37</span>
+        </div>
+        <div class="num" style="font:var(--dw) 30px/1 var(--disp);margin-top:12px">0 € <span style="opacity:.45;font-size:18px">/ 12 000 €</span></div>
+        <div class="bar" style="margin-top:12px"><i style="width:2%"></i></div>
+        <p class="p">Le billet se paie avec du cash encaissé, pas avec des appels passés.</p>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:18px">
+      <div class="k">Arbre de compétences · survole les nœuds</div>
+      <div class="tree">
+        <div class="br">
+          <div class="brh">Corps</div><div class="brs">2 / 5</div>
+          <button class="node on"><span class="ni"><span class="ring"></span><svg viewBox="0 0 24 24"><path d="M6.5 9v6M17.5 9v6M3.5 10.5v3M20.5 10.5v3M6.5 12h11"/></svg></span><span class="nl">Force</span><span class="nv">NIV. 2</span></button>
+          <span class="lk done"></span>
+          <button class="node on"><span class="ni"><span class="ring"></span><svg viewBox="0 0 24 24"><path d="M13 4.5a1.4 1.4 0 1 0 0-.1M8 20l2.5-4.5 2-1.5 1.5 3.5 3 2M5.5 11l3-2.5 3 .5 2.5 2.5 3 .5"/></svg></span><span class="nl">Endurance</span><span class="nv">NIV. 1</span></button>
+          <span class="lk"></span>
+          <button class="node lock"><span class="ni"><span class="ring"></span><svg viewBox="0 0 24 24"><rect x="5" y="10.5" width="14" height="9" rx="2.5"/><path d="M8.5 10.5V8a3.5 3.5 0 0 1 7 0v2.5"/></svg></span><span class="nl">Explosivité</span><span class="nv">NIV. 0</span></button>
+        </div>
+        <div class="br">
+          <div class="brh">Social</div><div class="brs">1 / 5</div>
+          <button class="node on"><span class="ni"><span class="ring"></span><svg viewBox="0 0 24 24"><circle cx="9" cy="8.5" r="3.2"/><path d="M3.5 19.5c.6-3.2 2.8-5 5.5-5s4.9 1.8 5.5 5M16 6.2a3.2 3.2 0 0 1 0 6"/></svg></span><span class="nl">Présence</span><span class="nv">NIV. 1</span></button>
+          <span class="lk"></span>
+          <button class="node lock"><span class="ni"><span class="ring"></span><svg viewBox="0 0 24 24"><path d="M4.5 6.5h15v9h-9l-4 3.5v-3.5h-2z"/></svg></span><span class="nl">Écoute</span><span class="nv">NIV. 0</span></button>
+          <span class="lk"></span>
+          <button class="node lock"><span class="ni"><span class="ring"></span><svg viewBox="0 0 24 24"><rect x="5" y="10.5" width="14" height="9" rx="2.5"/><path d="M8.5 10.5V8a3.5 3.5 0 0 1 7 0v2.5"/></svg></span><span class="nl">Autorité calme</span><span class="nv">NIV. 0</span></button>
+        </div>
+        <div class="br">
+          <div class="brh">Dîn</div><div class="brs">1 / 5</div>
+          <button class="node on"><span class="ni"><span class="ring"></span><svg viewBox="0 0 24 24"><path d="M17.5 15.5A6.5 6.5 0 1 1 11 5a5.2 5.2 0 0 0 6.5 10.5z"/></svg></span><span class="nl">Régularité</span><span class="nv">NIV. 1</span></button>
+          <span class="lk"></span>
+          <button class="node lock"><span class="ni"><span class="ring"></span><svg viewBox="0 0 24 24"><path d="M5 5.5h9a2.5 2.5 0 0 1 2.5 2.5v11H7.5A2.5 2.5 0 0 1 5 16.5z"/><path d="M19 7v12"/></svg></span><span class="nl">Coran</span><span class="nv">NIV. 0</span></button>
+          <span class="lk"></span>
+          <button class="node lock"><span class="ni"><span class="ring"></span><svg viewBox="0 0 24 24"><path d="M12 4.5v15M6 9l6-4.5L18 9M6 9v7l6 3.5 6-3.5V9"/></svg></span><span class="nl">Tahajjud</span><span class="nv">NIV. 0</span></button>
+        </div>
+        <div class="br">
+          <div class="brh">Style</div><div class="brs">0 / 5</div>
+          <button class="node lock"><span class="ni"><span class="ring"></span><svg viewBox="0 0 24 24"><path d="M8 4.5 12 8l4-3.5 3.5 2.5-3 4v8.5h-9V11l-3-4z"/></svg></span><span class="nl">Tenue</span><span class="nv">NIV. 0</span></button>
+          <span class="lk"></span>
+          <button class="node lock"><span class="ni"><span class="ring"></span><svg viewBox="0 0 24 24"><path d="M12 3.5 14.2 9l5.8.4-4.5 3.8 1.5 5.6L12 15.8 6.9 18.8l1.5-5.6L4 9.4 9.8 9z"/></svg></span><span class="nl">Soin</span><span class="nv">NIV. 0</span></button>
+          <span class="lk"></span>
+          <button class="node lock"><span class="ni"><span class="ring"></span><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="7.5"/><path d="M12 8v4l2.5 2"/></svg></span><span class="nl">Ponctualité</span><span class="nv">NIV. 0</span></button>
+        </div>
+      </div>
+      <p class="p" style="margin-top:14px">Icônes dessinées, plus d'emojis. L'anneau tourne au survol, le nœud se soulève, la branche s'illumine.</p>
+    </div>
+  </section>
+
+  <section class="plan">
+    <h2>Le nouvel arbre : 8 branches, tous les aspects</h2>
+    <p class="lead">Aujourd'hui l'arbre ne parle que de travail. Voilà ce que je propose : des nœuds concrets, mesurables, dont certains montent tout seuls avec ce que tu notes déjà (⚡), et d'autres avec un record que tu saisis (pompes, temps au km, charge).</p>
+    <div class="bl">
+      <div class="bx"><span class="t">Corps</span><b>Ce que ton corps sait faire</b><ul>
+        <li>Force <span>— pompes d'affilée, charge soulevée</span></li>
+        <li>Endurance <span>— km courus, temps au km ⚡</span></li>
+        <li>Explosivité <span>— saut, sprint</span></li>
+        <li>Souffle <span>— minutes de cardio sans pause</span></li>
+        <li>Légèreté <span>— kilos perdus ⚡</span></li></ul></div>
+      <div class="bx"><span class="t">Social</span><b>Comment tu es avec les gens</b><ul>
+        <li>Présence <span>— tenir une conversation sans fuir</span></li>
+        <li>Écoute <span>— laisser parler, reformuler</span></li>
+        <li>Autorité calme <span>— dire non sans s'énerver</span></li>
+        <li>Réseau <span>— personnes rencontrées en vrai</span></li>
+        <li>Parole <span>— parler en public, en live</span></li></ul></div>
+      <div class="bx"><span class="t">Dîn</span><b>Ta pratique</b><ul>
+        <li>Régularité <span>— prières à l'heure ⚡</span></li>
+        <li>Coran <span>— pages lues ⚡</span></li>
+        <li>Tahajjud <span>— nuits debout ⚡</span></li>
+        <li>Adhkar <span>— matin et soir ⚡</span></li>
+        <li>Caractère <span>— patience, langue, promesses tenues</span></li></ul></div>
+      <div class="bx"><span class="t">Mental</span><b>Ta tête</b><ul>
+        <li>Discipline <span>— journées tenues d'affilée ⚡</span></li>
+        <li>Concentration <span>— blocs sans téléphone</span></li>
+        <li>Confiance <span>— actions faites malgré la peur</span></li>
+        <li>Calme <span>— méditation, respiration ⚡</span></li>
+        <li>Mémoire <span>— ce que tu retiens de tes lectures</span></li></ul></div>
+      <div class="bx"><span class="t">Style</span><b>Le mec que tu veux être</b><ul>
+        <li>Tenue <span>— s'habiller comme le Oubey du 30 avril</span></li>
+        <li>Soin <span>— sommeil, peau, barbe, posture</span></li>
+        <li>Ponctualité <span>— arriver en avance</span></li>
+        <li>Tenue de parole <span>— ce que tu dis, tu le fais</span></li>
+        <li>Posture <span>— se tenir droit, regarder dans les yeux</span></li></ul></div>
+      <div class="bx"><span class="t">Vente</span><b>Ton métier</b><ul>
+        <li>Cold call <span>— appels passés ⚡</span></li>
+        <li>Objections <span>— objections encaissées</span></li>
+        <li>Setting <span>— RDV posés ⚡</span></li>
+        <li>Closing <span>— clients signés ⚡</span></li>
+        <li>Négociation <span>— prix tenu sans baisser</span></li></ul></div>
+      <div class="bx"><span class="t">Acquisition</span><b>L'agence</b><ul>
+        <li>Meta Ads · Google Ads · Landing pages</li>
+        <li>Tracking · CRM &amp; automatisation</li></ul></div>
+      <div class="bx"><span class="t">Contenu</span><b>Ta marque</b><ul>
+        <li>Hooks &amp; scripts · Tournage · Montage ⚡</li>
+        <li>Storytelling · Marque perso ⚡</li></ul></div>
+    </div>
+    <p class="foot">Et le système d'XP : aujourd'hui tout rapporte des points en vrac. Je propose de le resserrer — <b>les actions qui font avancer le 30 avril rapportent gros</b> (cash encaissé, client signé, RDV, journée préparée, prière à l'heure, jour de jeûne), le reste rapporte peu. Tu verras enfin ce qui compte vraiment.</p>
+    <p class="foot">Dis-moi : <b>1, 2 ou 3</b> — et ce que tu veux changer dans les branches ci-dessus.</p>
+  </section>
+</div>
+<script>
+const NAMES = {
+  "1":["Jungle","Vert profond, jade, une touche d'or. Titres Sora · texte Manrope · chiffres JetBrains Mono."],
+  "2":["Or de nuit","Noir neutre, or mat, vert sapin en second. Titres Bricolage Grotesque · texte Inter · chiffres IBM Plex Mono."],
+  "3":["Jade & graphite","Graphite froid, jade vif, cuivre. Titres Space Grotesk · texte Inter · chiffres Space Mono."]
+};
+const SW = ["--bg","--s1","--s2","--line","--acc","--acc2","--fg"];
+const demo = document.getElementById("demo");
+function paint(){
+  const d = demo.dataset.d, cs = getComputedStyle(demo);
+  document.getElementById("dn").textContent = NAMES[d][0];
+  document.getElementById("dm").textContent = NAMES[d][1];
+  document.getElementById("sw").innerHTML = SW.map(v => {
+    const c = cs.getPropertyValue(v).trim();
+    return `<i style="background:${c};color:${v === "--fg" || v === "--acc" || v === "--acc2" ? "#000a" : "#fff8"}">${c}</i>`;
+  }).join("");
+}
+document.querySelectorAll(".switch button").forEach(b => b.addEventListener("click", () => {
+  document.querySelectorAll(".switch button").forEach(x => x.setAttribute("aria-pressed", String(x === b)));
+  demo.dataset.d = b.dataset.s; paint();
+}));
+paint();
+</script>
+</body>
+</html>

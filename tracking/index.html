@@ -1395,7 +1395,9 @@ mark.kw{color:#0B0C0A;background:linear-gradient(100deg,var(--acc) 0 40%,#F5FFB0
 .jf,.jn{display:flex;align-items:center;gap:8px;text-align:left;padding:10px 12px;border-radius:14px;border:1px solid var(--line);background:var(--s1);color:inherit;cursor:pointer;font:inherit}
 .jn{flex-direction:column;align-items:flex-start}.jn small{color:var(--mut);font-size:11.5px}
 .jf.on,.jn.on{border-color:var(--acc);background:var(--s2)}
-.jed{gap:10px}.jt{font-size:20px;font-weight:800}.jb{min-height:50vh;resize:vertical;line-height:1.6}
+.jed{gap:10px}.jt{font-size:20px;font-weight:800}
+/* .jb appartient au J-xxx du QG : la regle journal (min-height:50vh) etirait le heros de 400 px */
+.jed .jb{min-height:50vh;resize:vertical;line-height:1.6}
 body.syncing #view,body.syncing #overlay{pointer-events:none}
 body.syncing #view{opacity:.55;filter:saturate(.5);transition:opacity .2s}
 body.syncing::after{content:"Synchronisation de tes données…";position:fixed;left:50%;bottom:calc(28px + env(safe-area-inset-bottom));transform:translateX(-50%);background:var(--ink);color:var(--ink-fg);padding:12px 20px;border-radius:99px;font-weight:700;z-index:9999;box-shadow:0 10px 30px rgba(0,0,0,.35);animation:ntfIn .3s ease}
@@ -1426,6 +1428,15 @@ html,body{max-width:100%;overflow-x:hidden}
 }
 /* écran de connexion : l'app reste visible mais inerte derrière */
 body.locked #view,body.locked .rail,body.locked .tabbar,body.locked .mtop,body.locked .chrome{pointer-events:none;filter:blur(3px) saturate(.6);opacity:.5}
+
+/* pastilles de la barre du bas + carte Dubaï */
+.tabbar button{position:relative}
+.tabbar .tbb{position:absolute;top:4px;right:calc(50% - 26px);min-width:16px;height:16px;display:grid;place-items:center;
+  font:800 10px/1 var(--body);background:var(--acc);color:var(--on-acc);border-radius:99px;padding:0 4px}
+.tabbar .tbb.bad{background:var(--bad);color:#fff}
+.dub{background:linear-gradient(135deg,rgba(255,225,77,.10),transparent 60%)}
+.dubw{display:flex;align-items:center;gap:14px}
+.dube{font-size:clamp(34px,6vw,52px);line-height:1;filter:drop-shadow(0 0 14px rgba(255,225,77,.35))}
 </style>
 </head>
 <body>
@@ -1519,10 +1530,10 @@ const ic = (n, cls = "") => `<svg class="${cls}" viewBox="0 0 24 24" fill="none"
 
 /* sommaire : [vue, nom, groupe] */
 const SECTIONS = [
-  ["today","QG","Exécuter"],["plan","Agenda","Exécuter"],["tasks","Missions","Exécuter"],["game","Trophées","Exécuter"],["prog","Progression","Exécuter"],
-  ["biz","Prospection","Business"],["content","Contenu","Business"],["money","Cash","Business"],["dash","Dashboard","Business"],
-  ["din","Dîn","Toi"],["body","Physique","Toi"],["mind","Mental","Toi"],["journal","Journal","Toi"],["skills","Compétences","Toi"],["books","Livres","Toi"],
-  ["vision","Vision","Ton pourquoi"],["passions","Passions","Ton pourquoi"],["coach","Coach","Ton pourquoi"],
+  ["today","QG","Chaque jour"],["plan","Agenda","Chaque jour"],["biz","Prospection","Chaque jour"],["din","Dîn","Chaque jour"],["body","Physique","Chaque jour"],
+  ["prog","Progression","Suivre"],["game","Trophées","Suivre"],["dash","Dashboard","Suivre"],["money","Cash","Suivre"],["content","Contenu","Suivre"],
+  ["tasks","Missions","Quand tu veux"],["coach","Coach","Quand tu veux"],["mind","Mental","Quand tu veux"],["journal","Journal","Quand tu veux"],
+  ["vision","Vision","Quand tu veux"],["passions","Passions","Quand tu veux"],["skills","Compétences","Quand tu veux"],["books","Livres","Quand tu veux"],
 ];
 const TABS = [["today","QG","today"],["plan","Agenda","plan"],["biz","Prospect.","biz"],["din","Dîn","din"],["more","Plus","more"]];
 
@@ -1578,9 +1589,12 @@ const famOf = b => T(b.type, b).f;
 const H = (h, m = 0) => h * 60 + m;
 const B = (type, dur, title, pin, subs) => ({type, dur: dur ?? TYPES[type].d, title: title ?? TYPES[type].l, pin: pin ?? null, subs: subs || TYPES[type].subs || []});
 const R = () => B("routine", Math.max(60, H(9, 30) - DS()), null, null, routineSubs(DS()));  /* la morning routine finit toujours à 9h30 */
+/* Meridia : arrêté le 24/11/2026. Rien n'est supprimé en base, mais plus rien
+   n'est proposé ni compté tant que Réglages ne le rallume pas. */
+const MER = () => settings().meridia === true;
 const weekday = o => [
   R(), B("prep", 60),
-  o.meridia ? B("meridia", 90, null, H(10,30)) : B("call", 90, null, H(10,30)),
+  o.meridia && MER() ? B("meridia", 90, null, H(10,30)) : B("call", 90, null, H(10,30)),
   B("review", 30), ...o.content, B("chill", 30), B("menage", 20),
   B("call", 90, null, H(15)), B("mindset", 30), B("mosquee"), B("repas"), B("marche"), B("femme", 60),
   o.live ? B("live", 105, o.live, H(20)) : B("lecture", 60, "Lecture libre", H(20)),
@@ -1592,7 +1606,7 @@ const TYPE_WEEK = {
   mar: () => weekday({meridia:false, live:"Live Unchained · Sebbar", content:[B("tournage", 90)]}),
   mer: () => weekday({meridia:false, live:null, content:[B("montage", 75), B("publi", 15)]}),
   jeu: () => weekday({meridia:true, live:"Live Unchained · Sebbar", content:[B("script", 45), B("tournage", 45)]}),
-  ven: () => [R(), B("prep", 60), B("meridia", 90, null, H(10,30)), B("lecture", 60, "Lecture"),
+  ven: () => [R(), B("prep", 60), MER() ? B("meridia", 90, null, H(10,30)) : B("call", 90, null, H(10,30)), B("lecture", 60, "Lecture"),
     B("salat", 60, "Jumu3a à la mosquée", H(13)), B("rdv", 120, "RDV hebdo · Sofian"), B("publi", 15), B("libre", 15, "Retour"),
     B("mindset", 30), B("mosquee"), B("repas"), B("marche"), B("femme", 60),
     B("live", 120, "Live général du H · Hamza Yacoubi", H(20)), B("orga", 15, null, H(22,5)), B("lecture", 40, "Lecture · 40 min")],
@@ -1601,7 +1615,7 @@ const TYPE_WEEK = {
     B("femme", 185, "Soirée avec L · chill"), B("orga", 15, null, H(22,5)), B("lecture", 40, "Lecture · 40 min")],
   dim: () => [R(), B("marche", 60, "Marche longue"), B("menage", 60, "Reset maison"), B("orga", 60, "Prépa de la semaine"),
     B("veille", 45), B("script", 45), B("mindset", 30), B("lecture", 90, "Lecture libre"), B("femme", 60, "Sortie avec L"),
-    B("mosquee"), B("repas"), B("marche"), B("femme", 60), B("meridia", 60, "Live Meridia", H(20)), B("femme", 65),
+    B("mosquee"), B("repas"), B("marche"), B("femme", 60), ...(MER() ? [B("meridia", 60, "Live Meridia", H(20))] : []), B("femme", 65),
     B("orga", 15, null, H(22,5)), B("lecture", 40, "Lecture · 40 min")],
 };
 const CODES = ["lun","mar","mer","jeu","ven","sam","dim"];
@@ -2426,7 +2440,7 @@ const hideTip = () => { tipEl().classList.remove("on"); document.querySelectorAl
 /* ---------- chrome : navigation, bandeau ---------- */
 function buildChrome(){
   let grp = ""; $("nav").insertAdjacentHTML("beforeend", SECTIONS.map(([k, l, gp]) => { const h = gp !== grp ? `<span class="ngrp">${esc(gp)}</span>` : ""; grp = gp; return `${h}<button data-go="${k}">${ic(k)}<span>${l}</span><span class="badge" data-badge="${k}" hidden></span></button>`; }).join(""));
-  $("tabbar").insertAdjacentHTML("beforeend", TABS.map(([k, l, i]) => `<button data-go="${k}">${ic(i)}<span>${l}</span></button>`).join(""));
+  $("tabbar").insertAdjacentHTML("beforeend", TABS.map(([k, l, i]) => `<button data-go="${k}">${ic(i)}<span>${l}</span><span class="badge tbb" data-tbadge="${k}" hidden></span></button>`).join(""));
   $("sheetGrid").innerHTML = SECTIONS.concat([["settings","Réglages"]]).map(([k, l]) => `<button data-go="${k}">${ic(k)}<span>${l}</span></button>`).join("");
 }
 function updateChrome(){
@@ -2440,17 +2454,19 @@ function updateChrome(){
   let ti = TABS.findIndex(t => t[0] === S.view); if (ti < 0) ti = 4;
   $("tind").style.setProperty("--i", ti);
   [...$("tabbar").querySelectorAll("button")].forEach((b, i) => i === ti ? b.setAttribute("aria-current", "page") : b.removeAttribute("aria-current"));
-  const over = doc("tasks").items.filter(t => !t.done && t.due && t.due < today).length;
-  const cl = doc("biz").clients.filter(c => !c.done && c.when && c.when <= today).length;
   const bd = (k, n, bad) => { const e = document.querySelector(`[data-badge="${k}"]`); if (!e) return; e.hidden = !n; e.textContent = n; e.classList.toggle("bad", !!bad); };
-  bd("tasks", over, true); bd("biz", cl, false);
-  const st = prepState(addDays(today, 1)); bd("plan", (new Date().getHours() >= 20 || new Date().getHours() < 4) && (st === "tonight" || st === "late") ? "!" : 0, true);
+  const tb = (k, n, bad) => { const e = document.querySelector(`[data-tbadge="${k}"]`); if (!e) return; e.hidden = !n; e.textContent = n; e.classList.toggle("bad", !!bad); };
+  const F = fillTodo(), urg = {};
+  F.items.forEach(o => { if (o.urgent) urg[o.view] = 1; });
+  SECTIONS.forEach(([k]) => bd(k, F.byView[k] || 0, !!urg[k]));
+  const tabKeys = TABS.map(t => t[0]);
+  TABS.forEach(([k]) => { if (k !== "more") tb(k, F.byView[k] || 0, !!urg[k]); });
+  tb("more", Object.keys(F.byView).filter(k => !tabKeys.includes(k)).reduce((a, k) => a + F.byView[k], 0), false);
   document.querySelectorAll(".themelbl").forEach(e => e.textContent = THEMES.find(t => t[0] === theme)[1]);
   const G = S.g; if (G){ const set = (id, v) => { const e = $(id); if (e) e.textContent = v; };
     set("railLvl", G.level); set("mLvl", G.level); set("railRank", G.rank); set("railXp", `${nf(G.xp)} XP`); set("railStreak", G.streak);
     const nb2 = $("railXpBar"); if (nb2) nb2.style.width = clampP((G.xp - G.cur) / Math.max(1, G.next - G.cur) * 100) + "%"; set("railNext", `${nf(G.next - G.xp)} XP → ${G.level + 1}`); }
   const lb = $("loadbar"); if (lb) lb.hidden = !S.loading;
-  bd("din", 0); bd("game", 0);
 }
 function renderBanner(){
   const today = logicalToday(), tm = addDays(today, 1), now = new Date(), h = now.getHours(), m = now.getMinutes(), st = prepState(tm);
@@ -2465,6 +2481,7 @@ function renderBanner(){
 
 /* ---------- AUJOURD'HUI ---------- */
 function counters(w, k, full = true){
+  if (w === "m" && !MER()) return "";
   const c = getDay(k).log.calls[w], name = w === "m" ? "Meridia" : "OZ Vizion", col = w === "m" ? "var(--f-mer)" : "var(--f-biz)";
   const fix = S.fixOpen ? `<div class="fix">${[["c","Appels"],["a","Décrochés"],["r","RDV"]].map(([f, l]) => `<div><button class="ib sm bare" data-fix="${w}:${f}:-1" aria-label="Retirer">${ic("minus")}</button><span>${l} <b class="num">${c[f]}</b></span><button class="ib sm bare" data-fix="${w}:${f}:1" aria-label="Ajouter">${ic("plus")}</button></div>`).join("")}</div>` : "";
   const last = S.lastCnt && S.lastCnt.w === w && S.lastCnt.k === k;
@@ -2629,7 +2646,7 @@ function viewToday(){
   if (sgT === "prog") main = `<div class="qgrid"><div class="qcol">${progHtml || nowCard}</div><div class="qcol">${gt.replace('class="g2 rise" style="--d:4;--o:8"', 'class="stack rise" style="gap:16px;--d:4;--o:8"')}</div></div>`;
   else if (sgT === "soir") main = `<div class="qgrid"><div class="qcol">${summaryCard(today, "Résumé automatique de ta journée")}${bilan}</div><div class="qcol">${questHtml}${summaryCard(addDays(today, -1), "Hier")}</div></div>`;
   else main = `<div class="qgrid"><div class="qcol">${nowCard}${questHtml}${ctrHtml}</div><div class="qcol">${qHtml}${dinMini}${reqHtml}${corps}</div></div>`;
-  $("view").innerHTML = `<div class="stack" style="gap:20px">${hero}${segT}${main}</div>`;
+  $("view").innerHTML = `<div class="stack" style="gap:20px">${hero}<div class="g2 rise" style="--d:1">${todoCard(0)}${dubaiCard(0)}</div>${segT}${main}</div>`;
 }
 function todoBlock(list, scope, withMove){
   const rows = list.map((t, i) => `<div class="todo">${cbx(`${scope}-t-${t.id}`, t.done, esc(t.t), `data-tcheck="${scope}" data-ti="${i}"`)}
@@ -2718,7 +2735,7 @@ function viewWeek(sg){
       <button class="btn pri" data-open="${addDays(today, 1)}">Préparer demain ${ic("arrow")}</button>
     </div>
     <div class="rise" style="--d:2">${calendar(cols, {now:true, foot:true})}</div>
-    <div class="legend rise" style="--d:3">${FAM_ORDER.map(f => `<span><i style="--fc:${fc(f)}"></i>${FAM[f].l}</span>`).join("")}<span class="mut">· Seuls les jours validés s'affichent.</span></div>
+    <div class="legend rise" style="--d:3">${FAM_ORDER.filter(f => f !== "mer" || MER()).map(f => `<span><i style="--fc:${fc(f)}"></i>${FAM[f].l}</span>`).join("")}<span class="mut">· Seuls les jours validés s'affichent.</span></div>
     <div class="card rise" style="--d:3"><div class="ch"><h3 class="h">Bilan de la semaine</h3></div>
       <div class="g4">
         <div class="stat"><span class="v num">${eves}<small>/7</small></span><span class="l">jours préparés la veille</span></div>
@@ -2753,7 +2770,7 @@ function viewDay(sg){
   const callMin = L.filter(x => T(x.b.type, x.b).calls && !/live/i.test(x.b.title)).reduce((a, x) => a + x.b.dur, 0);
   const walkMin = L.filter(x => x.b.type === "marche").reduce((a, x) => a + x.b.dur, 0);
   const problems = L.filter(x => x.clash).length, custom = settings().customTypes;
-  const needM = ["lun","jeu","ven"].includes(code) && !L.some(x => x.b.type === "meridia" && x.start <= H(10,30) && x.end >= H(12));
+  const needM = MER() && ["lun","jeu","ven"].includes(code) && !L.some(x => x.b.type === "meridia" && x.start <= H(10,30) && x.end >= H(12));
   let rows = "";
   L.forEach(({b, start, end, gap, clash}, i) => {
     const t = T(b.type, b), f = t.f, open = S.open.has(b.id);
@@ -2773,13 +2790,13 @@ function viewDay(sg){
         <form class="form" data-subadd="${i}"><input class="in" id="sub-${esc(b.id)}" placeholder="Ajouter une sous-tâche" autocomplete="off"><button class="btn" type="submit">Ajouter</button></form></div>` : ""}
     </div>`;
   });
-  const groups = FAM_ORDER.map(f => {
+  const groups = FAM_ORDER.filter(f => f !== "mer" || MER()).map(f => {
     const items = Object.entries(TYPES).filter(([, t]) => t.f === f && !t.hide), cust = custom.filter(c => (c.fam || "vie") === f);
     return `<div class="grp"><span class="k">${FAM[f].l}</span>${items.map(([key, t]) => `<button class="chip" data-add="${key}"><span class="dot" style="--fc:${fc(f)}"></span>${esc(t.l)}</button>`).join("")}${cust.map(c => `<span class="chip"><button class="row" style="gap:7px;font-weight:700" data-add="${esc(c.key)}"><span class="dot" style="--fc:${fc(f)}"></span>${esc(c.label)}</button><button class="x" data-deltype="${esc(c.key)}" aria-label="Retirer cette tâche perso">×</button></span>`).join("")}</div>`;
   }).join("");
   const newForm = S.newType ? `<div class="card inset"><h3 class="h sm">Tâche perso</h3>
     <div class="form"><input class="in" id="nt-name" placeholder="Ex. Salle de sport, Banque, Appel client…" value="${esc(S.newType.label)}" autocomplete="off"></div>
-    <div class="fl">${FAM_ORDER.map(f => `<button data-ntfam="${f}" aria-pressed="${S.newType.fam === f}"><span class="dot" style="--fc:${fc(f)};margin-right:6px"></span>${FAM[f].l}</button>`).join("")}</div>
+    <div class="fl">${FAM_ORDER.filter(f => f !== "mer" || MER()).map(f => `<button data-ntfam="${f}" aria-pressed="${S.newType.fam === f}"><span class="dot" style="--fc:${fc(f)};margin-right:6px"></span>${FAM[f].l}</button>`).join("")}</div>
     <div class="row"><button class="btn pri" data-act="createType">Créer et ajouter</button><button class="btn ghost" data-act="cancelType">Annuler</button></div>
     <span class="small mut">Elle s'ajoute à la journée et reste ensuite dans tes tâches prêtes.</span></div>` : "";
   const empty = !L.length ? `<div class="card emptyday"><div class="h">Journée vide</div>
@@ -2826,7 +2843,7 @@ function viewType(sg){
     ${head("Planning", "Semaine <em>type</em>", sg)}
     <span class="mut rise" style="--d:1">Ta référence : quand tu prépares un jour, tu pars de ce modèle en un clic, puis tu ajustes.</span>
     <div class="rise" style="--d:2">${calendar(cols)}</div>
-    <div class="legend rise" style="--d:3">${FAM_ORDER.map(f => `<span><i style="--fc:${fc(f)}"></i>${FAM[f].l}</span>`).join("")}</div>
+    <div class="legend rise" style="--d:3">${FAM_ORDER.filter(f => f !== "mer" || MER()).map(f => `<span><i style="--fc:${fc(f)}"></i>${FAM[f].l}</span>`).join("")}</div>
     <div class="g2 rise" style="--d:4">
       <div class="card"><h3 class="h sm">Mes prérequis · tous les jours</h3>
         <span class="small mut">Tes non-négociables. Tu les coches chaque jour dans « Aujourd'hui ».</span>
@@ -2922,15 +2939,15 @@ function bizCalls(sg){
       <div class="stepper"><button class="ib" data-mok="-1" aria-label="Retirer un RDV validé">${ic("minus")}</button><span class="v num">${mOk}</span><button class="ib" data-mok="1" aria-label="Ajouter un RDV validé">${ic("plus")}</button></div></div>${bar(mOk / tg.rdvWeek * 100)}` : ""}</div>`; };
   const days = [...Array(14)].map((_, i) => addDays(today, i - 13)), get = (k, w) => { const d = savedDay(k); return d ? d.log.calls[w] : {c:0, a:0, r:0}; };
   const chart = barChart({labels: days.map(k => String(dateOf(k).getDate())),
-    series:[{name:"Meridia", color:"var(--f-mer)", values:days.map(k => get(k, "m").c)}, {name:"OZ Vizion", color:"var(--f-biz)", values:days.map(k => get(k, "o").c)}],
+    series:[...(MER() ? [{name:"Meridia", color:"var(--f-mer)", values:days.map(k => get(k, "m").c)}] : []), {name:"OZ Vizion", color:"var(--f-biz)", values:days.map(k => get(k, "o").c)}],
     tips: i => { const k = days[i], m = get(k, "m"), o = get(k, "o"); return `${cap(longDate(k))}\nMeridia : ${m.c} appels · ${m.a} décr. · ${m.r} RDV\nOZ Vizion : ${o.c} appels · ${o.a} décr. · ${o.r} RDV`; },
     ref:{v:tg.calls, l:`objectif ${tg.calls}/jour`}});
   const axes = doc("biz").axes;
   $("view").innerHTML = `
     ${head("Prospection", "Les <em>appels</em>", sg)}
     <div class="rise" style="--d:1">${seg([["week","Cette semaine"],["last","Semaine dernière"],["30","30 jours"]], S.period, "data-period")}</div>
-    <div class="g2 rise" style="--d:2">${card("m")}${card("o")}</div>
-    <section class="card rise" style="--d:3"><div class="ch"><h3 class="h sm">Appels par jour · 14 jours</h3><div class="lgd"><span><i style="--fc:var(--f-mer)"></i>Meridia</span><span><i style="--fc:var(--f-biz)"></i>OZ Vizion</span></div></div>${chart}</section>
+    <div class="g2 rise" style="--d:2">${MER() ? card("m") : ""}${card("o")}</div>
+    <section class="card rise" style="--d:3"><div class="ch"><h3 class="h sm">Appels par jour · 14 jours</h3><div class="lgd">${MER() ? `<span><i style="--fc:var(--f-mer)"></i>Meridia</span>` : ""}<span><i style="--fc:var(--f-biz)"></i>OZ Vizion</span></div></div>${chart}</section>
     <div class="g2 rise" style="--d:4">
       <section class="card" id="ctrs"><div class="ch"><h3 class="h sm">Compteur du jour</h3>${rdvPill(today)}<span class="sp"></span><button class="btn sm ghost" data-act="fixToggle">${S.fixOpen ? "Fermer" : "Corriger"}</button></div>${counters("m", today)}${counters("o", today)}</section>
       <section class="card"><h3 class="h sm">Axes d'amélioration</h3>
@@ -3239,7 +3256,7 @@ function viewGoals(){
     <div class="g2">
       ${goal("Objectif cash", `${eur(tg.cash)} → Dubaï`, cnt(cash, "eur"), "/ " + nf(tg.cash), " €", cash / tg.cash * 100, [`avant le ${shortDate(tg.cashDate)}`, cash >= tg.cash ? "Atteint. Al hamdulillah." : `Rythme nécessaire : <b>${eur((tg.cash - cash) / dl * 7)}/semaine</b> pendant ${Math.ceil(dl / 7)} semaines.`], 1)}
       ${goal("Objectif agence", `${tg.closings} closings`, cnt(clos), "/ " + tg.closings, "", clos / tg.closings * 100, [`avant le ${shortDate(tg.closingsDate)} · J-${Math.max(0, diffDays(today, tg.closingsDate))}`, clos >= tg.closings ? "Objectif atteint." : `Il en manque ${tg.closings - clos}. Combien de RDV OZ Vizion cette semaine ?`], 2)}
-      ${goal("Meridia · cette semaine", `${tg.rdvWeek} RDV validés = ${eur(tg.rdvWeek * tg.rdvValue)}`, cnt(mOk), "/ " + tg.rdvWeek, "", mOk / tg.rdvWeek * 100, ["validés = show-up payés", `${posed} RDV posé${posed > 1 ? "s" : ""} cette semaine · ${eur(mOk * tg.rdvValue)} gagnés.`], 3)}
+      ${MER() ? goal("Meridia · cette semaine", `${tg.rdvWeek} RDV validés = ${eur(tg.rdvWeek * tg.rdvValue)}`, cnt(mOk), "/ " + tg.rdvWeek, "", mOk / tg.rdvWeek * 100, ["validés = show-up payés", `${posed} RDV posé${posed > 1 ? "s" : ""} cette semaine · ${eur(mOk * tg.rdvValue)} gagnés.`], 3) : ""}
       ${goal("Le défi", "180 jours", cnt(dn), "/ " + NDAYS, " jours", dn / NDAYS * 100, [`du 2 nov. au 30 avr.`, `${onTime}/${judged} jours préparés la veille · respect moyen ${scN ? Math.round(scSum / scN) + " %" : "—"}.`], 4)}
     </div>
     <section class="card rise" style="--d:5"><div class="ch"><h3 class="h sm">Les 180 jours</h3><div class="lgd"><span><i style="--fc:var(--s3)"></i>pas préparé</span><span><i style="--fc:var(--acc);opacity:.35"></i>faible</span><span><i style="--fc:var(--acc)"></i>tenu</span></div></div>
@@ -3293,10 +3310,11 @@ function viewSettings(){
         ${f("profile.height", "Taille (cm)", p.height)}${f("profile.age", "Âge", p.age)}${f("profile.start", "Poids de départ (kg)", p.start)}${f("profile.goal", "Poids objectif (kg)", p.goal)}
         ${f("profile.cadence", "Pas par minute de marche", p.cadence)}</div></section>
       <section class="card"><h3 class="h sm">Objectifs</h3><div class="g2" style="gap:12px">
+        <div style="grid-column:1/-1">${cbx("set-mer", MER(), "Je fais encore des calls Meridia", 'data-mertgl="1"', "", false)}</div>
         ${f("targets.cash", "Cash net visé (€)", tg.cash)}${f("targets.cashDate", "Avant le", tg.cashDate, "", "date")}
         ${f("targets.week", "Cash visé / semaine (€)", tg.week)}${f("targets.deal", "Prix moyen d'un client (€)", tg.deal)}
         ${f("targets.closings", "Closings visés", tg.closings)}${f("targets.closingsDate", "Avant le", tg.closingsDate, "", "date")}
-        ${f("targets.rdvWeek", "RDV Meridia validés / semaine", tg.rdvWeek)}${f("targets.rdvValue", "€ par RDV validé", tg.rdvValue)}
+        ${MER() ? f("targets.rdvWeek", "RDV Meridia validés / semaine", tg.rdvWeek) + f("targets.rdvValue", "€ par RDV validé", tg.rdvValue) : ""}
         ${f("targets.calls", "Appels visés / jour", tg.calls)}${f("targets.rdvDay", "RDV posés visés / jour", tg.rdvDay)}${f("targets.posts", "Publications / semaine", tg.posts)}
         ${f("targets.kcal", "kcal / jour", tg.kcal)}${f("targets.prot", "Protéines (g)", tg.prot)}
         ${f("targets.steps", "Pas / jour", tg.steps)}${f("targets.fin30k", "Agence : € / mois visés", tg.fin30k)}</div></section>
@@ -3325,7 +3343,7 @@ async function getSample(){
 const ASK = {
   today:"Fais le point sur ma journée : où j'en suis par rapport au plan, ce qui manque, et ma prochaine action.",
   week:"Bilan de ma semaine : qu'est-ce qui m'a rapproché de mes objectifs, qu'est-ce qui m'en a éloigné ?",
-  calls:"Analyse mes appels Meridia et OZ Vizion : volume, décroché, conversion. Qu'est-ce que je corrige en premier ?",
+  calls:"Analyse mes appels OZ Vizion : volume, décroché, conversion. Qu'est-ce que je corrige en premier ?",
   evening:"Pose-moi les 3 questions les plus utiles pour mon bilan du soir.",
   levers:"Parmi mes tâches, lesquelles sont vraiment à haut levier pour le cash d'ici le 31 décembre ? Classe-les.",
   tomorrow:"Aide-moi à préparer demain : priorités, créneaux, et ce que je ne dois surtout pas lâcher.",
@@ -3337,7 +3355,7 @@ const COACH_RULES = `Tu es « le Coach », intégré à l'app 30.04.2027 d'Oubey
 
 Contexte :
 - Défi « Winter Arc / Lock-in 2K26 » : 180 jours, du 2 novembre 2026 au 30 avril 2027.
-- Business : cold caller pour Meridia (payé par RDV qualifié qui se présente ; calls Meridia obligatoires lundi, jeudi, vendredi 10h30-12h) et fondateur de l'agence OZ Vizion (leads Meta/Google Ads pour électriciens, IRVE, solaire). Projet OZ Lead (leads pour installateurs de pompes à chaleur). Marque perso Instagram (contenu mindset), pipeline contenu : idée → script → tournage → montage → publication. Il suit Unchained (Sebbar), MasterLab et les lives du H.
+- Business : fondateur de l'agence OZ Vizion. Il a arrêté le cold call pour Meridia en novembre 2026 : n'en parle plus, tout passe par OZ Vizion (leads Meta/Google Ads pour électriciens, IRVE, solaire). Projet OZ Lead (leads pour installateurs de pompes à chaleur). Marque perso Instagram (contenu mindset), pipeline contenu : idée → script → tournage → montage → publication. Il suit Unchained (Sebbar), MasterLab et les lives du H.
 - Les objectifs chiffrés, son profil et ses données du jour sont dans le JSON.
 - Musulman pratiquant (prières, Coran, istighfar, jeûne expiatoire de 60 jours, OMAD). « L », c'est Lilia, sa femme. Ses passions et son vision board sont dans le JSON : sers-t'en pour le motiver.
 - Le jeu : il gagne de l'XP, des niveaux, des quêtes et des récompenses. Mentionne-les quand c'est utile (ex. « encore 2 quêtes pour la journée parfaite »).
@@ -3399,7 +3417,7 @@ function coachContext(){
     objectifs:{
       cash:{cible:tg.cash, avant:tg.cashDate, encaisse_depuis_2nov:cashSum(START, tg.cashDate)},
       closings:{cible:tg.closings, avant:tg.closingsDate, signes:closingsCount(), liste:b.closings.map(c => ({client:c.client, date:c.date, montant:c.amount}))},
-      meridia_semaine:{rdv_valides_vises:tg.rdvWeek, rdv_valides:+getWeek(wk).mOk || 0, rdv_poses:sumCalls(wk, addDays(wk, 6)).m.r, euros_par_rdv:tg.rdvValue},
+      ...(MER() ? {meridia_semaine:{rdv_valides_vises:tg.rdvWeek, rdv_valides:+getWeek(wk).mOk || 0, rdv_poses:sumCalls(wk, addDays(wk, 6)).m.r, euros_par_rdv:tg.rdvValue}} : {}),
       appels_vises_par_jour:tg.calls, publications_par_semaine:tg.posts, agence_mois_vise:tg.fin30k,
     },
     aujourdhui:{programme:L.map(x => ({de:fmt(x.start), a:fmt(x.end), tache:x.b.title, statut:x.b.status || (x.end <= n ? "pas coché" : "à venir")})), en_cours:(L.find(x => n >= x.start && n < x.end) || {b:{}}).b.title || null,
@@ -3579,7 +3597,7 @@ function questsWeek(wk, ctx){
   let prep = 0; for (let i = 0; i < 7; i++){ const k = addDays(wk, i); if (k < START) continue; if (prepState(k) === "ok") prep++; }
   return qApply([
     {id:"wcash", e:"💶", t:`${eur(tg.week)} encaissés`, tt:g => `${eur(g)} encaissés`, cur:weekSum(ctx.cash, wk), goal:tg.week, xp:150, fmt:"eur"},
-    {id:"wmer", e:"✅", t:`${tg.rdvWeek} RDV Meridia validés`, tt:g => `${g} RDV Meridia validés`, cur:+w.mOk || 0, goal:tg.rdvWeek, xp:150},
+    ...(MER() ? [{id:"wmer", e:"✅", t:`${tg.rdvWeek} RDV Meridia validés`, tt:g => `${g} RDV Meridia validés`, cur:+w.mOk || 0, goal:tg.rdvWeek, xp:150}] : []),
     {id:"wvid", e:"🎬", t:`${tg.posts} vidéos publiées`, tt:g => `${g} vidéos publiées`, cur:weekSum(ctx.pub, wk), goal:tg.posts, xp:150},
     {id:"wprep", e:"🌙", t:"5 journées préparées la veille", tt:g => `${g} journées préparées la veille`, cur:prep, goal:5, xp:150},
     {id:"wsign", e:"🤝", t:"1 client signé", tt:g => `${g} client${g > 1 ? "s" : ""} signé${g > 1 ? "s" : ""}`, cur:weekSum(ctx.signed, wk), goal:1, xp:150},
@@ -4491,7 +4509,7 @@ function viewDash(){
   const dayN = Math.min(5, Math.max(1, diffDays(wk, today) + 1));
   const rows = [
     ["Appels", A.calls, B.calls, tg.calls * dayN], ["Décrochés", A.dec, B.dec, null], ["RDV posés", A.booked, B.booked, tg.rdvDay * dayN],
-    ["RDV Meridia validés", A.mer, B.mer, tg.rdvWeek], ["Closings tenus", A.held, B.held, null], ["Clients signés", A.signed, B.signed, 1],
+    ...(MER() ? [["RDV Meridia validés", A.mer, B.mer, tg.rdvWeek]] : []), ["Closings tenus", A.held, B.held, null], ["Clients signés", A.signed, B.signed, 1],
     ["Cash encaissé (€)", A.cash, B.cash, tg.week, tg.week * dayN / 5], ["Vidéos publiées", A.videos, B.videos, tg.posts], ["DM reçus via le contenu", A.dm, B.dm, null],
     ["Jours préparés la veille", A.prep, B.prep, Math.min(7, diffDays(wk, today) + 1)], ["Prières à l'heure", A.pray, B.pray, 5 * Math.min(7, diffDays(wk, today) + 1)],
   ];
@@ -4526,13 +4544,13 @@ function viewDash(){
       <section class="card"><h3 class="h sm">Ce que tu dois entendre</h3><div class="rev">${truths2(A, P).map(t => `<div class="rs"><span class="rl">${esc(t[1])}</span><span class="rn num">${esc(t[0])}</span></div>`).join("")}</div></section></div>`;
 }
 const SIMK = [["calls","Appels par jour",20,250,5,""],["pick","Taux de décroché",5,50,1," %"],["rdv","Décrochés → RDV",1,20,.5," %"],["show","RDV honorés",30,100,5," %"],["close","Taux de closing",5,60,1," %"],["deal","Prix d'un client",500,6000,100," €"],["days","Jours d'appels par semaine",3,6,1," j"],["mer","RDV Meridia validés / semaine",0,25,1,""]];
-function simSliders(s){ return SIMK.map(([k, l, mn, mx, st, u]) => `<div class="sl"><div class="slh"><span>${esc(l)}</span><b class="num" id="sv-${k}">${nf1(s[k]).replace(",0", "")}${u}</b></div><input type="range" min="${mn}" max="${mx}" step="${st}" value="${s[k]}" data-sim="${k}" aria-label="${esc(l)}"></div>`).join(""); }
+function simSliders(s){ return SIMK.filter(x => x[0] !== "mer" || MER()).map(([k, l, mn, mx, st, u]) => `<div class="sl"><div class="slh"><span>${esc(l)}</span><b class="num" id="sv-${k}">${nf1(s[k]).replace(",0", "")}${u}</b></div><input type="range" min="${mn}" max="${mx}" step="${st}" value="${s[k]}" data-sim="${k}" aria-label="${esc(l)}"></div>`).join(""); }
 function simOut(s){
   const tg = settings().targets, wkCalls = s.calls * s.days, dec = wkCalls * s.pick / 100, rdv = dec * s.rdv / 100, held = rdv * s.show / 100, cl = held * s.close / 100;
-  const moOZ = cl * 4.33 * s.deal, moMer = s.mer * 4.33 * tg.rdvValue, tot = moOZ + moMer;
+  const moOZ = cl * 4.33 * s.deal, moMer = MER() ? s.mer * 4.33 * tg.rdvValue : 0, tot = moOZ + moMer;
   return `<span class="k" style="color:inherit;opacity:.7">Ce que ça donne par mois</span><span class="sv num">≈ ${eur(tot)}</span>
     <div class="sr3"><span>Clients signés par mois</span><b>${nf1(cl * 4.33)}</b></div><div class="sr3"><span>RDV posés par semaine</span><b>${nf1(rdv)}</b></div>
-    <div class="sr3"><span>CA OZ Vizion par mois</span><b>${eur(moOZ)}</b></div><div class="sr3"><span>Meridia par mois</span><b>${eur(moMer)}</b></div>
+    <div class="sr3"><span>CA OZ Vizion par mois</span><b>${eur(moOZ)}</b></div>${MER() ? `<div class="sr3"><span>Meridia par mois</span><b>${eur(moMer)}</b></div>` : ""}
     <div class="sr3"><span>Semaines pour 12 000 €</span><b>${tot > 0 ? nf1(12000 / (tot / 4.33)) : "—"}</b></div><div class="sr3"><span>Sur 6 mois à ce rythme</span><b>${eur(Math.round(tot * 6))}</b></div><div class="sr3"><span>Clients/mois pour 30 000 €/mois</span><b>${nf1(30000 / Math.max(1, s.deal))}</b></div><div class="simps">${[["Prudent",{calls:60,pick:15,rdv:4,show:55,close:15}],["Ton objectif",{calls:100,pick:20,rdv:6,show:65,close:25}],["Avec l'inbound",{calls:60,pick:25,rdv:10,show:80,close:30}]].map(([l, v]) => `<button class="btn sm" data-simp='${JSON.stringify(v)}'>${l}</button>`).join("")}</div>`;
 }
 function tips(A, R, P){
@@ -4671,7 +4689,7 @@ const QMETA = [
   ["calls","📞","Appels par jour (lun-ven)",() => settings().targets.calls,"day"],["rdv","🎯","RDV posés par jour",() => settings().targets.rdvDay,"day"],
   ["pray","🕌","Prières à l'heure",() => 5,"day"],["prog","📅","Programme tenu (%)",() => 80,"day"],["prep","🌙","Préparer demain avant 23h",() => 1,"day"],
   ["read","📚","Pages de lecture (week-end)",() => 20,"day"],
-  ["wcash","💶","Cash de la semaine (€)",() => settings().targets.week,"week"],["wmer","✅","RDV Meridia validés",() => settings().targets.rdvWeek,"week"],
+  ["wcash","💶","Cash de la semaine (€)",() => settings().targets.week,"week"],...(MER() ? [["wmer","✅","RDV Meridia validés",() => settings().targets.rdvWeek,"week"]] : []),
   ["wvid","🎬","Vidéos publiées",() => settings().targets.posts,"week"],["wprep","🌙","Journées préparées la veille",() => 5,"week"],["wsign","🤝","Clients signés",() => 1,"week"]];
 function questEditor(){
   const gm = doc("game"), cfg = gm.qcfg || {}, cq = gm.cq || [];
@@ -5264,6 +5282,8 @@ function viewProg(){
   $("view").innerHTML = `
     ${head("Progression", "Mes <em>180 jours</em>", `<span class="pill acc num">jour ${n}/${NDAYS}</span><span class="pill num">J−${p.left}</span>`)}
 
+    ${dubaiCard(1)}
+
     <section class="card rise" style="--d:1">
       <div class="ch"><h3 class="h sm">Où tu en es vraiment</h3><span class="pill ${reg >= 80 ? "ok" : reg >= 50 ? "acc" : "bad"} num">${reg} % de journées remplies</span></div>
       ${bar(clampP(n / NDAYS * 100), "", "var(--acc)")}
@@ -5317,6 +5337,97 @@ function viewProg(){
       <span class="small mut">Projection brute : ton rythme constaté depuis le 2 novembre, prolongé tel quel. Ce n'est pas une promesse, c'est le prolongement de ce que tu as fait jusqu'ici${st.cash || st.calls ? "" : " — et pour l'instant il n'y a rien à prolonger"}.</span>
     </section>`;
 }
+/* =========================================================
+   À REMPLIR — ce qui reste à noter aujourd'hui.
+   Une seule source : la journée enregistrée. Chaque ligne pointe
+   vers l'écran où ça se remplit, et alimente la pastille du rail.
+   ========================================================= */
+const PRAY_L = {f:"Fajr", d:"Dohr", a:"Asr", m:"Maghrib", i:"Isha"};
+
+function fillTodo(){
+  const today = logicalToday(), d = getDay(today), lg = d.log || {}, st = settings();
+  const we = ["sam", "dim"].includes(codeOf(today)), h = new Date().getHours();
+  const out = [];
+  const add = (view, t, urgent) => out.push({view, t, urgent:!!urgent});
+
+  /* la journée est-elle préparée ? */
+  if (!hasPlan(savedDay(today))) add("plan", "Préparer ta journée", true);
+  const ps = prepState(addDays(today, 1));
+  if ((h >= 18 || h < 4) && (ps === "tonight" || ps === "late")) add("plan", "Préparer demain", ps === "late");
+
+  /* business : jours ouvrés seulement */
+  const c = lg.calls || {m:{}, o:{}};
+  if (!we && ((c.o.c || 0) + (c.m.c || 0)) === 0 && h >= 11) add("biz", "Noter tes appels du jour");
+
+  /* dîn : prières non notées, et seulement celles dont l'heure est passée */
+  const dn = dinOf(d), p = dn.p || {}, pt = prayerTimes(today);
+  const late = ["f", "d", "a", "m", "i"].filter(k => !p[k] && pt && pt[k] != null && nowMin() >= pt[k]);
+  if (late.length) add("din", late.length === 1 ? `Noter ${PRAY_L[late[0]]}` : `Noter ${late.length} prières`);
+
+  /* corps */
+  if (lg.w == null && h >= 7) add("body", "Te peser");
+  if (!lg.kcal && h >= 18) add("body", "Noter ton repas");
+
+  /* le bilan du soir */
+  if (!d.review && h >= 21) add("today", "Faire ton bilan du soir");
+
+  /* coach : 3 questions par jour */
+  const jn = (doc("coach").journal || []).filter(x => x.d === today).length;
+  if (jn < 3 && h >= 12) add("coach", jn ? "Finir les questions du coach" : "Répondre au coach");
+
+  /* missions en retard et clients à rappeler : déjà des engagements pris */
+  const over = doc("tasks").items.filter(t => !t.done && t.due && t.due <= today).length;
+  if (over) add("tasks", `${over} mission${over > 1 ? "s" : ""} en retard`, true);
+  const cl = doc("biz").clients.filter(x => !x.done && x.when && x.when <= today).length;
+  if (cl) add("biz", `${cl} client${cl > 1 ? "s" : ""} à rappeler`, true);
+
+  const byView = {};
+  out.forEach(o => { byView[o.view] = (byView[o.view] || 0) + 1; });
+  return {items:out, byView, n:out.length};
+}
+
+/* la carte du QG : où aller maintenant, et rien d'autre */
+function todoCard(d = 1){
+  const f = fillTodo();
+  if (!f.n) return `<section class="card rise" style="--d:${d}">
+    <div class="ch"><h3 class="h sm">À remplir maintenant</h3><span class="pill ok num">rien</span></div>
+    <span class="small">Tout ce qui pouvait être noté à cette heure-ci l'est. C'est exactement ce qu'il faut faire tous les jours.</span></section>`;
+  return `<section class="card rise" style="--d:${d};border:2px solid var(--acc)">
+    <div class="ch"><h3 class="h sm">À remplir maintenant</h3><span class="pill acc num">${f.n}</span></div>
+    <div class="row" style="flex-wrap:wrap">${f.items.map(o => `<button class="btn sm${o.urgent ? " bad" : ""}" data-go="${o.view}">${ic(o.view)}${esc(o.t)}</button>`).join("")}</div>
+    <span class="small mut">Touche un bouton : il t'emmène là où ça se note. C'est ça, et rien d'autre, qui fait avancer ta progression.</span></section>`;
+}
+
+/* ---------- Dubaï · 31 décembre ---------- */
+function dubai(){
+  const st = settings(), tg = st.targets, due = tg.cashDate || "2026-12-31";
+  const cash = g().stats.cash, left = Math.max(0, tg.cash - cash);
+  const days = Math.max(0, diffDays(logicalToday(), due));
+  const weeks = Math.max(1, days / 7);
+  return {due, cash, left, days, weeks, perWeek:left / weeks, pct:clampP(cash / Math.max(1, tg.cash) * 100), goal:tg.cash};
+}
+function dubaiCard(d = 2){
+  const b = dubai();
+  return `<section class="card rise dub" style="--d:${d}">
+    <div class="ch"><h3 class="h sm">✈️ Dubaï · 31 décembre</h3><span class="pill num${b.days <= 14 ? " bad" : ""}">J−${b.days}</span></div>
+    <div class="dubw"><span class="dube">🌃</span>
+      <div style="min-width:0;flex:1">
+        <div class="num" style="font-family:var(--disp);font-weight:850;font-size:clamp(26px,4vw,38px);line-height:1">${eur(b.cash)}<small style="opacity:.55"> / ${eur(b.goal)}</small></div>
+        ${bar(b.pct, "", "var(--gold)")}
+      </div></div>
+    <div class="g3">
+      <div class="stat"><span class="v num">${eur(b.left)}</span><span class="l">encore à encaisser</span></div>
+      <div class="stat"><span class="v num">${eur(Math.round(b.perWeek))}</span><span class="l">par semaine d'ici là</span></div>
+      <div class="stat"><span class="v num">${b.goal && settings().targets.deal ? Math.ceil(b.left / settings().targets.deal) : "—"}</span><span class="l">clients à signer</span></div>
+    </div>
+    <span class="small mut">Le billet se paie avec du cash encaissé, pas avec des appels passés. ${b.cash ? "" : "Pour l'instant : rien d'encaissé."}</span></section>`;
+}
+
+/* l'interrupteur Meridia (Réglages) */
+document.addEventListener("change", e => {
+  const t = e.target;
+  if (t && t.dataset && t.dataset.mertgl){ mutateSettings(s => { s.meridia = !!t.checked; }); toast(t.checked ? "Meridia réactivé." : "Meridia retiré de l'app."); }
+});
 /* =========================================================
    rendu, navigation, interactions, démarrage
    ========================================================= */

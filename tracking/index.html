@@ -4,11 +4,17 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-title" content="30.04.2027">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="description" content="Suivi personnel — accès réservé.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230B0C0A'/%3E%3Ctext x='32' y='43' font-family='Helvetica,Arial' font-size='30' font-weight='bold' text-anchor='middle' fill='%23D4FF3A'%3EOZ%3C/text%3E%3C/svg%3E">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="OZ Tracking">
+<meta name="application-name" content="OZ Tracking">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="apple-touch-icon" href="icon-180.png">
+<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="icon" type="image/png" sizes="512x512" href="icon-512.png">
+<link rel="manifest" href="data:application/manifest+json;base64,eyJuYW1lIjoiT1ogVHJhY2tpbmciLCJzaG9ydF9uYW1lIjoiT1ogVHJhY2tpbmciLCJkZXNjcmlwdGlvbiI6IlN1aXZpIHBlcnNvbm5lbCDCtyAzMC4wNC4yMDI3Iiwic3RhcnRfdXJsIjoiaHR0cHM6Ly9venZpemlvbi5mci90cmFja2luZy8iLCJzY29wZSI6Imh0dHBzOi8vb3p2aXppb24uZnIvdHJhY2tpbmcvIiwiZGlzcGxheSI6InN0YW5kYWxvbmUiLCJvcmllbnRhdGlvbiI6InBvcnRyYWl0IiwiYmFja2dyb3VuZF9jb2xvciI6IiMwNTA2MDUiLCJ0aGVtZV9jb2xvciI6IiMwNTA2MDUiLCJpY29ucyI6W3sic3JjIjoiaHR0cHM6Ly9venZpemlvbi5mci90cmFja2luZy9pY29uLTE5Mi5wbmciLCJzaXplcyI6IjE5MngxOTIiLCJ0eXBlIjoiaW1hZ2UvcG5nIiwicHVycG9zZSI6ImFueSJ9LHsic3JjIjoiaHR0cHM6Ly9venZpemlvbi5mci90cmFja2luZy9pY29uLTUxMi5wbmciLCJzaXplcyI6IjUxMng1MTIiLCJ0eXBlIjoiaW1hZ2UvcG5nIiwicHVycG9zZSI6ImFueSJ9LHsic3JjIjoiaHR0cHM6Ly9venZpemlvbi5mci90cmFja2luZy9pY29uLTUxMi5wbmciLCJzaXplcyI6IjUxMng1MTIiLCJ0eXBlIjoiaW1hZ2UvcG5nIiwicHVycG9zZSI6Im1hc2thYmxlIn1dfQ==">
 <title>30.04.2027</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <meta name="theme-color" content="#FFFFFF">
@@ -5091,35 +5097,50 @@ function supaCol(){
   };
 }
 
-/* ---------- écran de connexion ---------- */
+/* ---------- écran de connexion ----------
+   msg : {t:"…", k:"bad"|"info"} — un message raté est un message invisible,
+   donc il s'affiche en bloc, pas en petite ligne grise. */
+let LGPWD = ""; // garde la saisie le temps d'un message ; jamais enregistré nulle part
 function loginView(msg = "", busy = false){
+  const m0 = typeof msg === "string" ? (msg ? {t:msg, k:"bad"} : null) : msg;
   const mail = esc((SESS && SESS.email) || localStorage.getItem("oz30-mail") || "");
   $("overlay").innerHTML = `<div class="over" role="dialog" aria-label="Connexion">
     <div class="k acc">30.04.2027</div>
     <div class="aff" style="font-size:clamp(26px,5vw,44px)">Ton suivi,<br><span class="mark">ta base</span></div>
+    ${m0 ? `<div class="card" style="max-width:360px;border:2px solid var(--${m0.k === "info" ? "acc" : "bad"});text-align:left">
+      <b>${m0.k === "info" ? "À faire maintenant" : "Ça n'est pas passé"}</b>
+      <span class="small" style="white-space:pre-line">${esc(m0.t)}</span></div>` : ""}
     <form id="loginF" class="stack" style="gap:10px;width:100%;max-width:340px">
       <input class="in" id="lgMail" type="email" autocomplete="username" placeholder="Ton email" value="${mail}" required>
-      <input class="in" id="lgPwd" type="password" autocomplete="current-password" placeholder="Ton mot de passe" required minlength="8">
+      <input class="in" id="lgPwd" type="password" autocomplete="current-password" placeholder="Ton mot de passe" value="${esc(LGPWD)}" required minlength="8">
       <button class="btn acc lg" type="submit" ${busy ? "disabled" : ""}>${ic("arrow")}${busy ? "Connexion…" : "Me connecter"}</button>
       <button class="btn sm" type="button" data-act="lgNew" ${busy ? "disabled" : ""}>Première fois : créer mon accès</button>
     </form>
-    ${msg ? `<span class="small bad">${esc(msg)}</span>` : `<span class="small mut">Tes données restent dans ta base, pas dans cette page.</span>`}</div>`;
+    ${m0 ? "" : `<span class="small mut">Tes données restent dans ta base, pas dans cette page.</span>`}</div>`;
   document.body.classList.add("locked");
   const m = $("lgMail"); if (m && !busy && !mail) m.focus();
 }
 const fval = id => { const e = $(id); return e ? e.value : ""; };
 async function doLogin(creating){
   const mail = fval("lgMail").trim(), pwd = fval("lgPwd"); // le mot de passe n'est jamais rogné
-  if (!mail || pwd.length < 8){ loginView("Email et mot de passe (8 caractères minimum)."); return; }
+  LGPWD = pwd;
+  if (!mail || pwd.length < 8){ loginView("Il manque ton email ou ton mot de passe (8 caractères minimum)."); return; }
   loginView("", true);
   try {
     const s = creating ? await supaSignup(mail, pwd) : await supaLogin(mail, pwd);
     try { localStorage.setItem("oz30-mail", mail); } catch(e){}
-    if (!s){ loginView("Compte créé. Confirme l'email reçu, puis connecte-toi."); return; }
+    if (!s){ loginView({k:"info", t:`Ton accès est créé. Supabase vient d'envoyer un email de confirmation à ${mail}.\n\n1. Ouvre cet email (regarde aussi les spams) et clique le lien.\n2. Reviens ici et appuie sur « Me connecter ».\n\nTant que l'email n'est pas confirmé, la connexion sera refusée.`}); return; }
+    LGPWD = "";
     document.body.classList.remove("locked"); $("overlay").innerHTML = ""; S.loading = true; render(); initDb();
   } catch(e){
     const t = String(e.message || e);
-    loginView(/Invalid login/i.test(t) ? "Email ou mot de passe incorrect." : /already/i.test(t) ? "Cet accès existe déjà : connecte-toi." : t);
+    loginView(
+      /not confirmed/i.test(t) ? {k:"info", t:`Ton accès existe, mais l'email n'est pas encore confirmé.\n\nOuvre le message de Supabase envoyé à ${mail} (vérifie les spams), clique le lien, puis reviens appuyer sur « Me connecter ».`}
+      : /already/i.test(t) ? {k:"info", t:"Cet accès existe déjà. Appuie sur « Me connecter » avec le même mot de passe. S'il ne passe pas, c'est que l'email n'a pas encore été confirmé."}
+      : /Invalid login/i.test(t) ? "Email ou mot de passe incorrect. Si tu viens de créer ton accès, confirme d'abord l'email reçu."
+      : /weak_password|at least/i.test(t) ? "Mot de passe trop court : 8 caractères minimum."
+      : /Failed to fetch|NetworkError/i.test(t) ? "Pas de connexion à ta base. Vérifie ta connexion et réessaie."
+      : t);
   }
 }
 function logout(){ sessClear(); COL = null; S.store = {}; toast("Déconnecté."); loginView(); }
